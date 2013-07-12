@@ -1,0 +1,29 @@
+﻿<div data-options="dxView : { name: 'Maps', title: 'Maps' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " >
+        
+		<div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">Lattitude</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: lat }"></div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Longitude</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: lng }"></div>
+            </div>
+			<div class="dx-field">
+				<div data-bind="dxButton: { text: 'Dove sono ?', clickAction: $root.locatePosition }"></div>
+				<div data-bind="dxButton: { text: 'Dove sono ?X', clickAction: $root.locatePositionX }"></div>
+				<div data-bind="dxButton: { text: 'Add', clickAction: $root.addPosition } "></div>
+			</div>
+        </div>
+		
+		
+        <div class="map">
+			<div id="map" data-bind="dxMap: options"></div>
+        </div>
+		
+		
+		
+		<span data-bind="text: mappaId"></span>
+    </div>
+</div>

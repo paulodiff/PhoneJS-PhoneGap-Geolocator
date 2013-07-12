@@ -1,0 +1,17 @@
+﻿<div data-options="dxView : { name: 'geopositionsList', title: 'Elenco posizioni salvate', layout: 'navbar' }">
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " >
+        <div class="list-indentation">
+			<div data-bind="dxList: { dataSource: dataSourceXML, pullRefreshEnabled: false }">
+                <div data-options="dxTemplate : { name: 'item' } " data-bind="dxAction: '#geolocator/{$data._id.$oid}'">
+                    <div>
+                        <div>
+							<div class="product-price">id:<strong data-bind="text: $data._id.$oid" class="product-name"></strong></div>
+							<div> <strong data-bind="text: $data.datesaved" class="product-name"></strong> <strong data-bind="text: $data.timesaved" class="product-name"></strong> </div>
+                            <div class="product-price"> <strong data-bind="text: $data.latitude" class="product-name"></strong> <strong data-bind="text: $data.longitude" class="product-name"></strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

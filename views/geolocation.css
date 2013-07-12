@@ -1,0 +1,29 @@
+﻿/* Put css styles for Maps view here */
+/* TODO : replaces 100% height */
+
+.dx-theme-ios  #tabs + div.map {
+    height: 100%;
+    padding-bottom: 44px;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+.dx-theme-android  #tabs  + div.map {
+    height: 100%;
+    padding-bottom: 46px;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+.dx-theme-win8phone  #tabs  + div.map {
+    height: 100%;
+    padding-bottom: 21px;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+}

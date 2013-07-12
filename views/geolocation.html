@@ -1,0 +1,21 @@
+﻿<div data-options="dxView : { name: 'geolocation', title: 'geolocation' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " >
+        
+		<div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">Lat & Long</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: lat_lng }"></div>
+            </div>
+			<div class="dx-field">
+				<div data-bind="dxButton: { text: 'Dove sono ?', clickAction: $root.locatePosition }"></div>
+				<div data-bind="dxButton: { text: 'Dove sono random?', clickAction: $root.locateSimplePosition }"></div>
+				<div data-bind="dxButton: { text: 'Salva posizione', clickAction: $root.savePosition } "></div>
+			</div>
+        </div>
+				
+        <div class="map">
+			<div id="map" data-bind="dxMap: options"></div>
+        </div>
+
+    </div>
+</div>

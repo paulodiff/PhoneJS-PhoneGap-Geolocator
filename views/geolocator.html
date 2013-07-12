@@ -1,0 +1,32 @@
+﻿<div data-options="dxView : { name: 'geolocator', title: 'Geolocator' } " >
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+		<div class="dx-fieldset">
+		    <div class="dx-field">
+                <div class="dx-field-label">Final location:</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: finalLocation }"></div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Current location:</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: currentLocation }"></div>
+            </div>	
+            <div class="dx-field">
+                <div class="dx-field-label">Haversine:</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: haversine }"></div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Bearing:</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: bearing }"></div>
+            </div>			
+			<div data-bind="dxButton:{text:'update! me', clickAction: updateMyLocation}"></div>
+		</div>
+	
+	
+        <div data-bind="dxScrollView: {}">
+			<img id="compass" src="img/compass.png">
+			
+		</div>
+    </div>
+	
+
+	
+</div>

@@ -1,0 +1,19 @@
+﻿<div data-options="dxView : { name: 'compass', title: 'Compass' } " >
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+		<div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">Heading</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: heading }"></div>
+            </div>
+		</div>
+	
+	
+        <div data-bind="dxScrollView: {}">
+			<img id="compass" src="img/compass.png">
+			<div data-bind="dxButton:{text:'CLick me', clickAction: buttonClicked}"></div>
+		</div>
+    </div>
+	
+
+	
+</div>

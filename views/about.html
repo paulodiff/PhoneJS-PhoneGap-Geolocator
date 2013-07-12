@@ -1,0 +1,38 @@
+﻿<div data-options="dxView : { name: 'about', title: 'About' } " >
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+		<div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">Latitude</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: latitude }"></div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Longitude</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: longitude }"></div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Latitude1</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: latitude1 }"></div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Longitude1</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: longitude1 }"></div>
+            </div>			
+            <div class="dx-field">
+                <div class="dx-field-label">Bearing</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: bearing }"></div>
+            </div>			
+		</div>
+	
+	
+        <div data-bind="dxScrollView: {}">
+            <p style="padding: 5px">Modify this view to describe your application and provide additional information.</p>
+            <p style="padding: 5px">To learn more about PhoneJS, visit <a href="http://phonejs.devexpress.com">http://phonejs.devexpress.com</a>, where you can find documentation, feature demonstrations, and various tutorials.</p>
+            <p style="padding: 5px">If you have any questions about PhoneJS, do not hesitate to contact our support team via <a href="http://www.devexpress.com/support/center/">http://www.devexpress.com/support/center/</a>. </p>
+			<img id="compass" src="img/compass.png">
+			<div data-bind="dxButton:{text:'CLick me', clickAction: buttonClicked}"></div>
+		</div>
+    </div>
+	
+
+	
+</div>
