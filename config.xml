@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "info.ruggeri.MyApp"
+        version   = "1.0.0">
+		
+    <name>MyApp</name>
+
+    <description>
+        First project that ingregrate and test this mobile tecnologies:
+		PhoneGap - Mobile device access features
+		PhoneJS - Mobile developing framework
+		Mongolab - Cloud database access
+    </description>
+
+    <author href="http://www.ruggeri.info/mobile" email="mobile@ruggeri.info">
+        Ruggero Ruggeri
+    </author>		
+	
+	
+	<preference name="phonegap-version" value="2.9.0" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="permissions" value="none"/>
+	
+	
+	<-- Cordova / Phonegap icon and launch image generator -->
+	<-- http://www.arenddeboer.com/cordova-phonegap-default-icon-generator -->	
+		
+<icon src="cordova_res_generator/cordova_128.png"/>
+<icon src="cordova_res_generator/cordova_android_36.png" gap:platform="android" gap:density="ldpi"/>
+<icon src="cordova_res_generator/cordova_android_48.png" gap:platform="android" gap:density="mdpi"/>
+<icon src="cordova_res_generator/cordova_android_72.png" gap:platform="android" gap:density="hdpi"/>
+<icon src="cordova_res_generator/cordova_android_96.png" gap:platform="android" gap:density="xhdpi"/>
+<icon src="cordova_res_generator/cordova_bb_80.png" gap:platform="blackberry"/>
+<icon src="cordova_res_generator/cordova_bb_80.png" gap:platform="blackberry" gap:state="hover"/>
+<icon src="cordova_res_generator/cordova_ios_57.png" gap:platform="ios" width="57? height="57?/>
+<icon src="cordova_res_generator/cordova_ios_72.png" gap:platform="ios" width="72? height="72?/>
+<icon src="cordova_res_generator/cordova_ios_114.png" gap:platform="ios" width="114? height="114?/>
+<icon src="cordova_res_generator/cordova_ios_144.png" gap:platform="ios" width="144? height="144?/>
+<icon src="cordova_res_generator/cordova_64.png" gap:platform="webos"/>
+<icon src="cordova_res_generator/cordova_48.png" gap:platform="winphone"/>
+<icon src="cordova_res_generator/cordova_173.png" gap:platform="winphone" gap:role="background"/>
+
+<gap:splash src="cordova_res_generator/res/screen/android_ldpi_portrait.png.png" gap:platform="android" gap:density="ldpi"/>
+<gap:splash src="cordova_res_generator/res/screen/android_mdpi_portrait.png" gap:platform="android" gap:density="mdpi"/>
+<gap:splash src="cordova_res_generator/res/screen/android_hdpi_portrait.png" gap:platform="android" gap:density="hdpi"/>
+<gap:splash src="cordova_res_generator/res/screen/android_xhdpi_portrait.png" gap:platform="android" gap:density="xhdpi"/>
+<gap:splash src="cordova_res_generator/res/screen/blackberry_transparent_300.png" gap:platform="blackberry"/>
+<gap:splash src="cordova_res_generator/res/screen/iphone_portrait.png" gap:platform="ios" width="320? height="480?/>
+<gap:splash src="cordova_res_generator/res/screen/iphone_retina_portrait.png" gap:platform="ios" width="640? height="960?/>
+<gap:splash src="cordova_res_generator/res/screen/ipad_portrait.png" gap:platform="ios" width="768? height="1024?/>
+<gap:splash src="cordova_res_generator/res/screen/ipad_landscape.png" gap:platform="ios" width="1024? height="768?/>
+<gap:splash src="cordova_res_generator/res/screen/windows_phone_portrait.jpg" gap:platform="winphone"/>
+
+
+    <!--
+        Define access to external domains.
+
+        <access />            - a blank access tag denies access to all external resources.
+        <access origin="*" /> - a wildcard access tag allows access to all external resource.
+
+        Otherwise, you can specify specific domains:
+    -->
+    <!-- <access origin="http://127.0.0.1*"/> --> <!-- allow local pages --> 
+	
+	<access origin="*" />
+	
+    <!--
+        <access origin="http://phonegap.com" />                    - allow any secure requests to http://phonegap.com/
+        <access origin="http://phonegap.com" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
+        <access origin="http://phonegap.com" browserOnly="true" /> - only allows http://phonegap.com to be opened by the child browser.
+    -->
+
+
+</widget>	

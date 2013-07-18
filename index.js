@@ -81,7 +81,41 @@ window.MyApp = {};
 		
 		MyApp.app.router.register(":view/:id", {view: "home", id: undefined });
 		//MyApp.app.router.register(":view/:id");
-		MyApp.app.navigate();   
+		
+		
+		
+		// wait PhoneGap Event and Hide SplashScreen...
+		/*
+		 setTimeout(function () {
+                document.addEventListener("deviceready", function () {
+					console.log('.... go!');
+                    if(myapp.isWinPhone) {
+                        document.addEventListener("backbutton", function() {
+                            if(myapp.app.canBack()) {
+                                myapp.app.back();
+                            }
+                            else {
+                                throw new Error("exit");
+                            }
+                        }, false);
+                    }
+                    navigator.splashscreen.hide();
+                }, false);
+            }, 1000);
+			
+		*/
+		//
+		// Simple start up PhoneGap
+		//
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+		function onDeviceReady()
+		{
+			var startView = "home";
+			MyApp.app.navigate(startView);   
+		} 
+		
+		
 	});
 		
 }();
