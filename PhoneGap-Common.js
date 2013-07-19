@@ -16,6 +16,7 @@ var isConnected = false;
 var isHighSpeed;
 var internetInterval;
 var compassHeading = 0;
+var PhoneGapNetword_watchID = null;
 var PhoneGapCompass_watchID = null;
 var PhoneGapGeolocation_watchID = null;
 
