@@ -107,14 +107,28 @@ window.MyApp = {};
 		//
 		// Simple start up PhoneGap
 		//
+		
+		// call to library of PhoneGap-Common.js
+		initPhoneGap();
+	
+		/*
+	
 		document.addEventListener("deviceready", onDeviceReady, false);
 
 		function onDeviceReady()
 		{
+		
+			console.log('..starting PhoneGap..');
 			var startView = "home";
 			MyApp.app.navigate(startView);   
 		} 
 		
+		*/
+		
+		// TO REMOVE with Phonegap
+		MyApp.app.navigate();
+		
+		//navigator.splashscreen.show();
 		
 	});
 		

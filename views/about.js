@@ -1,8 +1,5 @@
 ﻿MyApp.about = function (params) {
 	
-	
-
-	
 	var toolbar = {
             items: [
               {
@@ -44,77 +41,56 @@
 	var longitude1 = ko.observable(12.5646);
 
 	var self = this;
-	
-	var bearing  = ko.computed(function() {
-		var bearing_1 = getBearing(latitude(),longitude(),latitude1(),longitude1());
-		$compass = $("#compass");
-		var bearing_1_int = parseInt(bearing_1);
-		var rotateDeg = 'rotate(' + bearing_1_int + 'deg)';
-		console.log(bearing_1_int);
-		$compass.css('-webkit-transform', rotateDeg);
-		return bearing_1;
-    }, this);
-	
+
 	var	messaggio = ko.observable('Setup');
 	var	titolo = 'Setup111111';
 		
 	function buttonClicked() {
-           //alert('1backxxxxx1');
+			console.log('PhoneGap check ... ');
+			console.log('isPhoneGapReady : ' + isPhoneGapReady);
+			console.log('isAndroid : '+ isAndroid);
+			console.log('isBlackberry : ' + isBlackberry);
+			console.log('isIphone  : ' + isIphone);
+			console.log('isWindows  : ' + isWindows);
+			console.log('deviceUUID  : ' + deviceUUID);
+			console.log('isConnected  : ' + isConnected);
+			console.log('isHighSpeed  : ' + isHighSpeed);
+			console.log('internetInterval  : '+ internetInterval);
+			getPhoneGapCompassHeading();
+			console.log('Heading : ' + compassHeading); 
 		   // get array push item
-		   
-		   $compass = $("#compass");
-		   //var rotation = 360 - heading;
-		   var rotation = Math.random() * (100);
-		   var rotateDeg = 'rotate(' + rotation + 'deg)';
-		   $compass.css('-webkit-transform', rotateDeg);
-		   
-		   
     };
-		
-		
-		
-	function radians(n) {
-		return n * (Math.PI / 180);
-	}
-	function degrees(n) {
-		return n * (180 / Math.PI);
-	}
-
-	function getBearing(startLat,startLong,endLat,endLong){
-	  startLat = radians(startLat);
-	  startLong = radians(startLong);
-	  endLat = radians(endLat);
-	  endLong = radians(endLong);
-
-	  var dLong = endLong - startLong;
-
-	  var dPhi = Math.log(Math.tan(endLat/2.0+Math.PI/4.0)/Math.tan(startLat/2.0+Math.PI/4.0));
-	  if (Math.abs(dLong) > Math.PI){
-		if (dLong > 0.0)
-		   dLong = -(2.0 * Math.PI - dLong);
-		else
-		   dLong = (2.0 * Math.PI + dLong);
-	  }
-
-	  return (degrees(Math.atan2(dLong, dPhi)) + 360.0) % 360.0;
-	}	
-		
 	
-
-    
+	
+	function StartPhoneGapCompass(){
+		PhoneGapCompass_startWatch();
+	};
+	
+	function StopPhoneGapCompass(){
+		PhoneGapCompass_stopWatch()
+	};
+	
+    function StartPhoneGapGeolocation(){
+		PhoneGapGeolocation_startWatch();
+	};
+	
+    function StopPhoneGapGeolocation(){
+		PhoneGapGeolocation_stopWatch();
+	};	
+	
 
     return {
 		latitude: latitude,
 		longitude: longitude,
 		latitude1: latitude1,
 		longitude1: longitude1,
-		bearing: bearing,
 		self: self,
-	
-		
 		messaggio: messaggio,
 		titolo: titolo,
+		StartPhoneGapCompass : StartPhoneGapCompass,
+		StopPhoneGapCompass : StopPhoneGapCompass,
+		StopPhoneGapGeolocation : StopPhoneGapGeolocation,
+		StartPhoneGapGeolocation  : StartPhoneGapGeolocation,
 		buttonClicked: buttonClicked		
-
 	};
 };
