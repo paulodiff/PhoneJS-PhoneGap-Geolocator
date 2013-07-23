@@ -61,10 +61,6 @@
 <icon src="cordova_res_generator/cordova_173.png" gap:platform="winphone" gap:role="background"/>
 
 
-<!-- Default for all --- 2 remove -->
-	<gap:splash src="cordova_res_generator/res/screen/android_ldpi_portrait.png" />
-<!-- 2 REMOVE SPLASH SCREEN -->
-
 <gap:splash src="cordova_res_generator/res/screen/android_ldpi_portrait.png" gap:platform="android" gap:density="ldpi"/>
 <gap:splash src="cordova_res_generator/res/screen/android_mdpi_portrait.png" gap:platform="android" gap:density="mdpi"/>
 <gap:splash src="cordova_res_generator/res/screen/android_hdpi_portrait.png" gap:platform="android" gap:density="hdpi"/>
