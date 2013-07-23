@@ -101,16 +101,48 @@ MyApp.geolocator = function (params) {
 			return bearing_1;
 			}, this);
 		
+		
 		this.updateMyLocation = function() {
            
+		   
+		   //Random data settings
+		   
 			var delta_lat = Math.random() * (1);
 			var delta_lng = Math.random() * (1);
 		   
 			console.log(delta_lat + ":" + delta_lng);
 
 		   	self.currentLatitude(self.finalLatitude() + delta_lat);
-			self.currentLongitude(self.finalLongitude() + delta_lng);
+			self.currentLatitude(self.finalLongitude() + delta_lng);
   
+		};
+		
+		
+		// start tracking position - search
+		this.startTracking = function() {
+		
+			var options = { enableHighAccuracy: true, timeout: 3000 };
+			PhoneGapGeolocation_watchID = navigator.geolocation.watchPosition( 
+				function (position) {
+				
+					console.log('traking updated .... ' + position.coords.latitude + ' ' + position.coords.longitude);
+					self.currentLatitude(position.coords.latitude);
+					self.currentLongitude(position.coords.longitude);
+				
+				
+				},
+				function () {
+							handleNoGeolocation(true);
+						}
+			
+			, options);
+		
+		};
+		
+		// stop tracking
+		this.stopTracking = function() {
+			PhoneGapGeolocation_stopWatch();
+		
 		};
 		
 		

@@ -61,6 +61,14 @@
 		   // get array push item
     };
 	
+	function StartPhoneGapNetwork(){
+		PhoneGap_networkDetection();
+		console.log(PhoneGap_networkDescription);
+		var element = document.getElementById('phonegap_output');
+        element.innerHTML = PhoneGap_networkDescription      + '<br />' +
+                            '<hr />'      + element.innerHTML;
+	};
+	
 	
 	function StartPhoneGapCompass(){
 		PhoneGapCompass_startWatch();
@@ -87,6 +95,7 @@
 		self: self,
 		messaggio: messaggio,
 		titolo: titolo,
+		StartPhoneGapNetwork : StartPhoneGapNetwork,
 		StartPhoneGapCompass : StartPhoneGapCompass,
 		StopPhoneGapCompass : StopPhoneGapCompass,
 		StopPhoneGapGeolocation : StopPhoneGapGeolocation,

@@ -69,3 +69,11 @@
     -moz-box-sizing: border-box; 
     box-sizing: border-box;
 }
+
+.myRule {
+    position: absolute;
+    bottom: 0;
+    top: 0px;
+    width: 100%;
+    height: auto;
+}

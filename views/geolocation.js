@@ -3,6 +3,7 @@
 function ViewModel()
     {
         var self = this;
+		this.loadPanelVisible = ko.observable(false);
 		this.lat = ko.observable(40.749825);
         this.lng = ko.observable(-73.987963);
 		this.loc = ko.observable();
@@ -16,16 +17,15 @@ function ViewModel()
 			//location: "44.05983592536113, 12.576427459716797 ",
 			//markers : ko.observableArray(),
 			width: '100%',
-            height: '500',
+            height: '400',
             //height: "500",
-            zoom: ko.observable(8)
+            zoom: ko.observable(5)
         };
 		
 		
-		this.gotoSavePosition = function(){
-		};
 		
 		this.locateSimplePosition = function(){
+			// GET A RANDOM POSITION FOR TEST
 		
 			//console.log('locateSimplePosition');
 		
@@ -44,30 +44,33 @@ function ViewModel()
 			viewModel.options.location(mapped);
 			//viewModel.options.zoom(zoom1);
 			console.log('locateSimplePosition:' + mapped);
+			
 			//viewModel.options.zoom(7);
-			
 			//map.panTo(mapped);
-			
 			//map.option('location.lng',lat1);
 			//map.option('location.lat',lng1);
 			//map.option('zoom',zoom1);
-			
-		
+					
 		};
 		
 		this.locatePosition = function(){
 			var map = $('#map').dxMap('instance');
 			var viewModel = this;
-		
-			
-		
+				
 			//viewModel.lat(44.05703525659159);
 			//viewModel.lng(12.56474953315258);
+		
+		
+			console.log('load panel...');
+		
+			viewModel.loadPanelVisible(true);
+		
 		
 			if (navigator.geolocation) {
 						navigator.geolocation.getCurrentPosition(function (position) {
 							viewModel.lat(position.coords.latitude);
 							viewModel.lng(position.coords.longitude);
+							viewModel.options.zoom(2);
 							//map.setZoom(10);
 							//map.mapOptions.zoom = 1;
 							
@@ -84,6 +87,17 @@ function ViewModel()
 									viewModel.lng(e.latLng.ib);
 								});
 							});
+							
+							
+							console.log(' hide panel...');			
+							viewModel.loadPanelVisible(false);
+							
+							// TODO save data!!!
+							
+							var message = "Nuova posizione salvata! Lat : " + viewModel.lat() + " long : " +   viewModel.lng() ;
+							DevExpress.ui.notify({ message: message, position: { of: '.dx-viewport .layout-content' } });
+							
+							
 						}, function () {
 							handleNoGeolocation(true);
 						});
@@ -92,9 +106,11 @@ function ViewModel()
 						handleNoGeolocation(false);
 					};
 					
+			
+		
+					
 		};		
-		
-		
+				
 		this.savePosition = function (){
 		
 			var deferred = new $.Deferred();
@@ -111,6 +127,7 @@ function ViewModel()
 			datesaved : '',
 			timesaved : '',
 			timestamp : ''
+			
 		};
 			
 			Geolocation_rr.name = new Date().getTime();
@@ -124,13 +141,11 @@ function ViewModel()
 			Geolocation_rr.timestamp = new Date().getTime();
 			Geolocation_rr.datesaved = Globalize.format( new Date(), "dd/MMMM/yyyy" );
 		    Geolocation_rr.timesaved = Globalize.format( new Date(), "hh:mm:ss" );
-			
-			
+						
 			//console.log( Globalize.format( new Date(), "dd/MMMM/yyyy" ) );
 			//console.log( Globalize.format( new Date(), "hh:mm:ss" ) );
 			//console.log( Globalize.format( new Date(), "hh:mm:ss" ) );
-			
-			
+						
 			$.ajax( { url: "https://api.mongolab.com/api/1/databases/demo_123/collections/geolocations?apiKey=DFfH9ZxX0DdVQCHKMphyMwteiLdvT23_",
 					 data: JSON.stringify( Geolocation_rr ),
 					 type: "POST",
@@ -164,9 +179,7 @@ function ViewModel()
 						});
 		};
 		*/
-		
-	
-		
+				
 		/* -------------------------------------------- */
 
 		/* GET POSITION FROM DB	-----------------------------------------------		

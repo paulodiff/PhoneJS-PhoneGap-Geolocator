@@ -84,6 +84,7 @@
         }
       }
     };
+	
 
 	
 	var viewModel = {
@@ -91,6 +92,11 @@
 		dataSourceXML: dataSourceXML,
         selectedTab: ko.observable(0),
 		searchQuery: ko.observable('cco').extend({ throttle: 500 }),
+		handleClickItem: function (e, itemData) {
+			console.log('buttonClick');
+            alert('Click for Id=' + itemData._id.$oid + ', Name=' + itemData.latitude);
+			return false;
+        },	
         tabContent: ko.observable()
     };
 	

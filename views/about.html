@@ -1,17 +1,9 @@
 ﻿<div data-options="dxView : { name: 'about', title: 'About' } " >
     <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
 		<div class="dx-fieldset">
-            <div class="dx-field">
-				<div data-bind="dxButton:{text:'CheckPhoneGap', clickAction: buttonClicked}"></div>
-				<div data-bind="dxButton:{text:'StartPhoneGapCompass', clickAction: StartPhoneGapCompass}"></div>
-				<div data-bind="dxButton:{text:'StopPhoneGapCompass', clickAction: StopPhoneGapCompass}"></div>
-				<div data-bind="dxButton:{text:'StartPhoneGapGeolocation', clickAction: StartPhoneGapGeolocation}"></div>
-				<div data-bind="dxButton:{text:'StopPhoneGapGeolocation', clickAction: StopPhoneGapGeolocation}"></div>
-            </div>
 			<div class="dx-field">
 				<div class="dx-field-label">Network:</div>
-				<div data-bind="dxButton:{text:'Start', clickAction: StartPhoneGapCompass}"></div>
-				<div data-bind="dxButton:{text:'Stop', clickAction: StopPhoneGapCompass}"></div>
+				<div data-bind="dxButton:{text:'Start', clickAction: StartPhoneGapNetwork}"></div>
             </div>		
 			<div class="dx-field">
 				<div class="dx-field-label">Compass:</div>

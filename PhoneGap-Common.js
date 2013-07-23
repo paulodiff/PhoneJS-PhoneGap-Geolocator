@@ -12,8 +12,9 @@ var intervalID = false;
 var deviceUUID;
 
 // Store the current network status
-var isConnected = false;
-var isHighSpeed;
+var PhoneGap_isConnected = false;
+var PhoneGap_isHighSpeed;
+var PhoneGap_networkDescription = null;
 var internetInterval;
 var compassHeading = 0;
 var PhoneGapNetword_watchID = null;
@@ -38,11 +39,13 @@ function initPhoneGap() {
         // to see if PhoneGap is ready.  Once done, the 
         // interval will be cleared and normal processing
         // can begin
+		/*
         intervalID = window.setInterval(function() {
               if (PhoneGap.available) {
                   onDeviceReady();
               }
           }, 500);
+		*/
       }
 }
 
@@ -61,7 +64,7 @@ function onDeviceReady() {
     deviceDetection();
     
     // detect for network access
-    networkDetection();
+    PhoneGap_networkDetection();
     
     // execute any events at start up
     executeEvents();
@@ -83,6 +86,7 @@ function executeEvents() {
         document.addEventListener("pause", onPause, false);
         document.addEventListener("resume", onResume, false);
         
+		/*
         // set a timer to check the network status
         internetInterval = window.setInterval(function() {
 				console.log('..checking network... : ' + navigator.connection.type);
@@ -93,6 +97,7 @@ function executeEvents() {
                 onOffline();
               }
           }, 5000);
+		*/
     }
 }
 
@@ -148,7 +153,11 @@ function checkConnection() {
         //alert('Connection type: ' + states[networkState]);
 }
 
-function networkDetection() {
+function PhoneGap_networkDetection() {
+
+
+	console.log('network .. detection ..');
+
     if (isPhoneGapReady) {
 		
         //if (navigator.network.connection.type != Connection.NONE) {
@@ -159,36 +168,52 @@ function networkDetection() {
         switch (navigator.connection.type) {
             case Connection.UNKNOWN:
 			case Connection.NONE:
-				isConnected = false;
-				isHighSpeed = false;
+				PhoneGap_isConnected = false;
+				PhoneGap_isHighSpeed = false;
 				break;
             case Connection.CELL_2G:
-				isConnected = true;			
-                isHighSpeed = false;
+				PhoneGap_isConnected = true;			
+                PhoneGap_isHighSpeed = false;
                 break;
             default:
-				isConnected = true;	
-                isHighSpeed = true;
+				PhoneGap_isConnected = true;	
+                PhoneGap_isHighSpeed = true;
                 break;
         }
+		
+		var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.NONE]     = 'No network connection';
+		
+		PhoneGap_networkDescription = states[navigator.connection.type];
+		
+
+		
+		
+		
     }
 }
 
 function onOnline() {
 	console.log('onOnline...');
-    isConnected = true;
+    PhoneGap_isConnected = true;
 }
 
 function onOffline() {
 	console.log('onOffline...');
-    isConnected = false;
+    PhoneGap_isConnected = false;
 }
 
 function onPause() {
     isPhoneGapReady = false;
     
     // clear the Internet check interval
-    window.clearInterval(internetInterval);
+    //window.clearInterval(internetInterval);
 }
 
 function onResume() {
@@ -198,6 +223,9 @@ function onResume() {
         initPhoneGap();
     }
 }
+
+// Network detection
+
 
 // Compass ------------------------------------------------------------------------
 
@@ -235,7 +263,8 @@ function onResume() {
 	
 	function PhoneGapGeolocation_startWatch() {
         // Get the most accurate position updates available on the device.
-        var options = { enableHighAccuracy: true };
+		// Throw an error if no update is received every 3 seconds
+        var options = { enableHighAccuracy: true, timeout: 3000 };
         PhoneGapGeolocation_watchID = navigator.geolocation.watchPosition(PhoneGapGeolocation_onSuccess, PhoneGapGeolocation_onError, options);
     }
 
@@ -248,15 +277,14 @@ function onResume() {
     }
 
     // clear the watch that was started earlier
-    function PhoneGapGeolocation_clearWatch() {
+    function PhoneGapGeolocation_stopWatch() {
         if (PhoneGapGeolocation_watchID != null) {
             navigator.geolocation.clearWatch(PhoneGapGeolocation_watchID);
             PhoneGapGeolocation_watchID = null;
         }
     }
 
-        // onError Callback receives a PositionError object
-        //
+    // onError Callback receives a PositionError object
     function PhoneGapGeolocation_onError(error) {
           alert('code: '    + error.code    + '\n' +
                 'message: ' + error.message + '\n');
