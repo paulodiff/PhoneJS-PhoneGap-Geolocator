@@ -1,13 +1,14 @@
 ﻿<div data-options="dxView : { name: 'geopositionsList', title: 'Elenco posizioni salvate', layout: 'navbar' }">
     <div data-options="dxContent : { targetPlaceholder: 'content' } " >
+		<div id="actionSheetContainer" data-bind="dxActionSheet: { dataSource: actionSheetData, visible: actionSheetVisible }"></div>
 		<div class="list-indentation">
 			<div class="myRule" data-bind="dxList: { dataSource: dataSourceXML, pullRefreshEnabled: false }">
                 <div data-options="dxTemplate : { name: 'item' } " data-bind="dxAction: '#geolocator/{$data._id.$oid}'" style="height: 100%">
-							<div class="product-price">id:<strong data-bind="text: $data._id.$oid" class="product-name"></strong></div>
-							<div> <strong data-bind="text: $data.datesaved" class="product-name"></strong> <strong data-bind="text: $data.timesaved" class="product-name"></strong> </div>
-                            <div class="product-price"> <strong data-bind="text: $data.latitude" class="product-name"></strong> <strong data-bind="text: $data.longitude" class="product-name"></strong></div>
-							<div data-bind="dxButton: { text: 'Delete Me', clickAction: function(e) {$root.handleClickItem(e, $data);} }"></div>
-                </div>
+					<div class="product-price">id:<strong data-bind="text: $data._id.$oid" class="product-name"></strong></div>
+					<div> <strong data-bind="text: $data.datesaved" class="product-name"></strong> <strong data-bind="text: $data.timesaved" class="product-name"></strong> </div>
+					<div class="product-price"> <strong data-bind="text: $data.latitude" class="product-name"></strong> <strong data-bind="text: $data.longitude" class="product-name"></strong></div>
+					<div data-bind="dxButton: { text: 'Delete Me', clickAction: function(e) {  $root.handleClickItem(e, $data); return false;} }"></div>
+				</div>
             </div>
         </div>
     </div>

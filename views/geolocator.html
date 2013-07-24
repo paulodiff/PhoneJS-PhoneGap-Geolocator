@@ -17,18 +17,24 @@
                 <div class="dx-field-label">Bearing:</div>
                 <div class="dx-field-value" data-bind="dxTextBox: { value: bearing }"></div>
             </div>			
+            <div class="dx-field">
+                <div class="dx-field-label">Heading:</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: heading }"></div>
+            </div>				
 			
 			<div class="dx-field-label">Tracking:</div>
 			<div data-bind="dxButton:{text:'Start', clickAction: startTracking}"></div>
 			<div data-bind="dxButton:{text:'Stop', clickAction: stopTracking}"></div>
 			<div data-bind="dxButton:{text:'Test!', clickAction: updateMyLocation}"></div>
+			<div id="trackingStatus">Stopped!</div>
 		</div>
+			<p>Bearing/Heading/Real direction</p>
 	
-	
-        <div data-bind="dxScrollView: {}">
-			<img id="compass" src="img/arrow.png" width="100" height="100">
+        	<img id="compass" src="img/arrow.png" width="50" height="50">
+			<img id="compass1" src="img/arrow.png" width="50" height="50">
+			<img id="compass2" src="img/arrow.png" width="50" height="50">
 			
-		</div>
+		
     </div>
 	
 

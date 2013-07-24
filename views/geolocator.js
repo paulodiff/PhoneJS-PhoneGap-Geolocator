@@ -82,6 +82,7 @@ MyApp.geolocator = function (params) {
 		this.finalLongitude= ko.observable(10.976787);
 		this.currentLatitude = ko.observable(44.000001111);
 		this.currentLongitude = ko.observable(12.00001111);
+		this.heading = ko.observable(1000);
 		
 		this.finalLocation = ko.computed(function() { return self.finalLatitude() + " : " + self.finalLongitude(); } );
 		this.currentLocation = ko.computed(function() { return self.currentLatitude() + " : " + self.currentLongitude(); } );
@@ -107,29 +108,41 @@ MyApp.geolocator = function (params) {
 		   
 		   //Random data settings
 		   
-			var delta_lat = Math.random() * (1);
-			var delta_lng = Math.random() * (1);
+			var delta_lat = Math.random() * (10);
+			var delta_lng = Math.random() * (10);
 		   
 			console.log(delta_lat + ":" + delta_lng);
 
 		   	self.currentLatitude(self.finalLatitude() + delta_lat);
-			self.currentLatitude(self.finalLongitude() + delta_lng);
+			self.currentLongitude(self.finalLongitude() + delta_lng);
   
 		};
 		
 		
 		// start tracking position - search
 		this.startTracking = function() {
-		
+			$('#trackingStatus').text('Run!');
+			
 			var options = { enableHighAccuracy: true, timeout: 3000 };
 			PhoneGapGeolocation_watchID = navigator.geolocation.watchPosition( 
 				function (position) {
 				
-					console.log('traking updated .... ' + position.coords.latitude + ' ' + position.coords.longitude);
+					//console.log('traking updated .... ' + position.coords.latitude + ' ' + position.coords.longitude);
 					self.currentLatitude(position.coords.latitude);
 					self.currentLongitude(position.coords.longitude);
-				
-				
+					self.heading(position.coords.heading);
+					
+					$compass = $("#compass1");
+					var heading_int = parseInt(position.coords.heading);
+					var rotateDeg = 'rotate(' + heading_int + 'deg)';
+					$compass.css('-webkit-transform', rotateDeg);
+					
+					$compass = $("#compass2");
+					var real_direction = heading_int + self.bearing();
+					if (real_direction > 360 ) real_direction = real_direction - 360;
+					var rotateDeg = 'rotate(' + real_direction + 'deg)';
+					$compass.css('-webkit-transform', rotateDeg);
+
 				},
 				function () {
 							handleNoGeolocation(true);
@@ -142,6 +155,7 @@ MyApp.geolocator = function (params) {
 		// stop tracking
 		this.stopTracking = function() {
 			PhoneGapGeolocation_stopWatch();
+			$('#trackingStatus').text('Stop!');
 		
 		};
 		
