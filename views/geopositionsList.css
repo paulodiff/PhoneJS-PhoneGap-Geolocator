@@ -5,6 +5,12 @@
     float: left; 
     margin-right: 15px;
 }
+
+.product-image-box-right {
+    float: right; 
+}
+
+
 .product-image-box img {
     width: 36px;
     height: 36px;
@@ -14,6 +20,7 @@
 }
 .product-price {
     font-size: 12px;
+	float: left;
 }
 
 /* iOS tab height - 44px + 27px */
