@@ -4,9 +4,9 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "info.ruggeri.MyApp"
-        version   = "1.0.0">
+        version   = "1.0.1">
 		
-    <name>MyApp</name>
+    <name>LocatoRR</name>
 
     <description>
         First project that ingregrate and test this mobile tecnologies:
