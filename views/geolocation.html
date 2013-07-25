@@ -5,11 +5,11 @@
 		<div class="dx-fieldset">
 
 			<div class="dx-field">
-				<div data-bind="dxButton: { text: 'Locate&save', clickAction: $root.locatePosition }"></div>
-				<div data-bind="dxButton: { text: 'Test', clickAction: $root.locateSimplePosition }"></div>
-				<div data-bind="dxButton: { text: 'Salva', clickAction: $root.savePosition, disabled:disabledButtonSaveValue } "></div>
-				<div data-bind="dxButton: { text: 'go', clickAction: $root.locateStartWatch } "></div>
-				<div data-bind="dxButton: { text: 'stop', clickAction: $root.locateStopWatch } "></div>
+				<!-- <div data-bind="dxButton: { text: 'Locate&save', clickAction: $root.locatePosition }"></div> -->
+				<!-- <div data-bind="dxButton: { text: 'Test', clickAction: $root.locateSimplePosition }"></div> -->
+				<div class="myButton" data-bind="dxButton: { text: 'Localizza', clickAction: $root.locateStartWatch } "></div>
+				<!-- <div data-bind="dxButton: { text: 'Salva', clickAction: $root.savePosition, disabled:disabledButtonSaveValue , type: 'success' } "></div> -->
+				<div class="myButton" data-bind="dxButton: { text: 'Salva', clickAction: $root.locateStopWatch, disabled:disabledButtonSaveValue , type: 'success' } "></div>
 
 			</div>
 			<div class="dx-field">

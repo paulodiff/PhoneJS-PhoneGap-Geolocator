@@ -4,8 +4,16 @@ function ViewModel()
     {
         var self = this;
 		this.loadPanelVisible = ko.observable(false);
+		this.numOfLocalization = 0;
 		this.lat = ko.observable(40.749825);
         this.lng = ko.observable(-73.987963);
+		
+		this.accuracy = ko.observable(0);      
+        this.altitudeAccuracy = ko.observable(0);
+        this.heading = ko.observable(0);
+        this.speed = ko.observable(0);
+        this.timestamp = ko.observable(0);
+				
 		this.loc = ko.observable();
 		this.lat_lng = ko.computed(function() { return self.lat() + " : " + self.lng(); } );
 		this.disabledButtonSaveValue = ko.observable(true);
@@ -49,17 +57,31 @@ function ViewModel()
 			var map = $('#map').dxMap('instance');
 			var viewModel = this;
 		
+			viewModel.loadPanelVisible(true);
+		
 			var options = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
 			PhoneGapGeolocation_watchID = navigator.geolocation.watchPosition( 
 				function (position) {
 	
 					console.log('traking updated .... ' + position.coords.latitude + ' ' + position.coords.longitude);
+					
 					viewModel.lat(position.coords.latitude);
 					viewModel.lng(position.coords.longitude);
+					viewModel.accuracy(position.coords.accuracy);      
+					viewModel.altitudeAccuracy(position.coords.altitudeAccuracy);
+					viewModel.heading(position.coords.heading);
+					viewModel.speed(position.coords.speed);
+					viewModel.timestamp(position.timestamp);
+					
 					viewModel.options.zoom(5);
 							
 					console.log('locatePosition: ' + viewModel.lat() + ":" + viewModel.lng());
+					
 					viewModel.disabledButtonSaveValue(false);
+					viewModel.loadPanelVisible(false);
+					
+					
+					viewModel.numOfLocalization = viewModel.numOfLocalization + 1;
 							
 					map.addMarker({
 						location: [viewModel.lat(), viewModel.lng()],
@@ -73,7 +95,7 @@ function ViewModel()
 						});
 					});	
 	
-					$('#output_debug').text(PhoneGapGeolocation_watchID + ' ' + position.timestamp + ' ');
+					$('#output_debug').text(PhoneGapGeolocation_watchID + ' ' + position.timestamp + '@'+ viewModel.numOfLocalization);
 				},
 				function () {
 							handleNoGeolocation(true);
@@ -84,8 +106,9 @@ function ViewModel()
 		
 		// stop Geolocation and saving .....
 		this.locateStopWatch = function(){
-	
+			var viewModel = this;
 			PhoneGapGeolocation_stopWatch();
+			viewModel.savePosition();
 			$('#output_debug').text('geo stopped!');
 		
 		};
@@ -146,29 +169,28 @@ function ViewModel()
 			var deferred = new $.Deferred();
 			var viewModel = this;
 			var Geolocation_rr = {
-			name : '',
-			latitude : '' ,
-			longitude : '', 
-			altitude : '',
-			accuracy : '',
-			altitudeAccuracy : '',
-			heading : '',
-			speed : '',
-			datesaved : '',
-			timesaved : '',
-			timestamp : ''
-			
-		};
+							name : '',
+							latitude : '' ,
+							longitude : '', 
+							altitude : '',
+							accuracy : '',
+							altitudeAccuracy : '',
+							heading : '',
+							speed : '',
+							datesaved : '',
+							timesaved : '',
+							timestamp : ''
+						};
 			
 			Geolocation_rr.name = new Date().getTime();
 			Geolocation_rr.latitude = viewModel.lat();
 			Geolocation_rr.longitude = viewModel.lng(); 
-			Geolocation_rr.altitude = 3455.344;
-			Geolocation_rr.accuracy = 1;
-			Geolocation_rr.altitudeAccuracy = 33;
-			Geolocation_rr.heading = 2234;
-			Geolocation_rr.speed = 11;
-			Geolocation_rr.timestamp = new Date().getTime();
+			Geolocation_rr.altitude = viewModel.altitude
+			Geolocation_rr.accuracy = viewModel.accuracy;
+			Geolocation_rr.altitudeAccuracy = viewModel.altitudeAccuracy;
+			Geolocation_rr.heading = viewModel.heading;
+			Geolocation_rr.speed = viewModel.speed;
+			Geolocation_rr.timestamp = viewModel.timestamp;
 			Geolocation_rr.datesaved = Globalize.format( new Date(), "dd/MMMM/yyyy" );
 		    Geolocation_rr.timesaved = Globalize.format( new Date(), "hh:mm:ss" );
 						

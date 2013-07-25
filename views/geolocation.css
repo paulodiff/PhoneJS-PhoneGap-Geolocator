@@ -27,3 +27,7 @@
     -moz-box-sizing: border-box; 
     box-sizing: border-box;
 }
+
+.myButton {
+    width: 50%;
+}
