@@ -1,5 +1,7 @@
 ﻿<div data-options="dxView : { name: 'geolocator', title: 'Geolocator' } " >
-    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+<div class="myRule" data-bind="dxScrollView:{}">
+    <!-- <div  data-options="dxContent : { targetPlaceholder: 'content' } " > -->
+	
 		<div class="dx-fieldset">
 		    <div class="dx-field">
                 <div class="dx-field-label">Final location:</div>
@@ -21,22 +23,21 @@
                 <div class="dx-field-label">Heading:</div>
                 <div class="dx-field-value" data-bind="dxTextBox: { value: heading }"></div>
             </div>				
-			
-			<div class="dx-field-label">Tracking:</div>
-			<div data-bind="dxButton:{text:'Start', clickAction: startTracking}"></div>
-			<div data-bind="dxButton:{text:'Stop', clickAction: stopTracking}"></div>
-			<div data-bind="dxButton:{text:'Test!', clickAction: updateMyLocation}"></div>
-			<div id="trackingStatus">Stopped!</div>
+			<div class="dx-field">
+				<div class="dx-field-label">Tracking:</div>
+				<div data-bind="dxButton:{text:'Start', clickAction: startTracking}"></div>
+				<div data-bind="dxButton:{text:'Stop', clickAction: stopTracking}"></div>
+				<div data-bind="dxButton:{text:'Test!', clickAction: updateMyLocation}"></div>
+				<div id="trackingStatus">Stopped!</div>
+			</div>				
 		</div>
-			<p>Bearing/Heading/Real direction</p>
-	
-        	<img id="compass" src="img/arrow.png" width="50" height="50">
-			<img id="compass1" src="img/arrow.png" width="50" height="50">
-			<img id="compass2" src="img/arrow.png" width="50" height="50">
 			
-		
-    </div>
-	
-
-	
+		<p>Bearing/Heading/Real direction</p>
+		<div id="output_debug"></div>
+       	<img id="compass" src="img/arrow.png" width="50" height="50">
+		<img id="compass1" src="img/arrow.png" width="50" height="50">
+		<img id="compass2" src="img/arrow.png" width="50" height="50">
+    
+	<!-- </div>  -->
+	</div>
 </div>

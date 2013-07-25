@@ -5,14 +5,18 @@
 		<div class="dx-fieldset">
 
 			<div class="dx-field">
-				<div data-bind="dxButton: { text: 'Localizza e salva posizione', clickAction: $root.locatePosition }"></div>
+				<div data-bind="dxButton: { text: 'Locate&save', clickAction: $root.locatePosition }"></div>
 				<div data-bind="dxButton: { text: 'Test', clickAction: $root.locateSimplePosition }"></div>
-				<div data-bind="dxButton: { text: 'Salva posizione', clickAction: $root.savePosition } "></div>
+				<div data-bind="dxButton: { text: 'Salva', clickAction: $root.savePosition, disabled:disabledButtonSaveValue } "></div>
+				<div data-bind="dxButton: { text: 'go', clickAction: $root.locateStartWatch } "></div>
+				<div data-bind="dxButton: { text: 'stop', clickAction: $root.locateStopWatch } "></div>
+
 			</div>
 			<div class="dx-field">
                 <div class="dx-field-label">Lat & Long</div>
                 <div class="dx-field-value" data-bind="dxTextBox: { value: lat_lng }"></div>
             </div>
+			<div id="output_debug"></div>
         </div>
 				
         <div class="map">

@@ -16,7 +16,6 @@ function getHaversine(lat1, lon1, lat2, lon2) {
     return d;
 }
 
-
 function getBearing(startLat,startLong,endLat,endLong){
   startLat = radians(startLat);
   startLong = radians(startLong);
@@ -36,11 +35,9 @@ function getBearing(startLat,startLong,endLat,endLong){
   return (degrees(Math.atan2(dLong, dPhi)) + 360.0) % 360.0;
 }	
 
-
 //setInterval($root.updateMyLocation(),2000);
 
 MyApp.geolocator = function (params) {
-	
 		
 	var toolbar = {
             items: [
@@ -104,10 +101,8 @@ MyApp.geolocator = function (params) {
 		
 		
 		this.updateMyLocation = function() {
-           
-		   
-		   //Random data settings
-		   
+        	   
+		    //Random data settings
 			var delta_lat = Math.random() * (10);
 			var delta_lng = Math.random() * (10);
 		   
@@ -118,12 +113,12 @@ MyApp.geolocator = function (params) {
   
 		};
 		
-		
 		// start tracking position - search
 		this.startTracking = function() {
 			$('#trackingStatus').text('Run!');
 			
 			var options = { enableHighAccuracy: true, timeout: 3000 };
+			//{ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
 			PhoneGapGeolocation_watchID = navigator.geolocation.watchPosition( 
 				function (position) {
 				
@@ -131,6 +126,8 @@ MyApp.geolocator = function (params) {
 					self.currentLatitude(position.coords.latitude);
 					self.currentLongitude(position.coords.longitude);
 					self.heading(position.coords.heading);
+					
+					$('#output_debug').text(PhoneGapGeolocation_watchID + ' ' + position.timestamp);
 					
 					$compass = $("#compass1");
 					var heading_int = parseInt(position.coords.heading);
@@ -177,7 +174,6 @@ MyApp.geolocator = function (params) {
 				
 				self.finalLatitude(data.latitude);
 				self.finalLongitude(data.longitude);
-
             }
         });
 		

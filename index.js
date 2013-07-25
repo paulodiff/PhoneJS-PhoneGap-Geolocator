@@ -61,11 +61,11 @@ window.MyApp = {};
 				action: "#geopositionsList",
 				icon: "tags"
 			  },
-			  {
+			  /*{
 				title: "Compass",
 				action: "#compass",
 				icon: "globe"
-			  },
+			  },*/
 			   {
 				title: "Geolocation",
 				action: "#geolocation",

@@ -7,3 +7,11 @@
   margin-left: auto ;
   margin-right: auto ;
 }
+
+.myRule {
+    position: absolute;
+    bottom: 0;
+    top: 32px;
+    width: 100%;
+    height: auto;
+}

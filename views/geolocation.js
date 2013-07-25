@@ -8,6 +8,7 @@ function ViewModel()
         this.lng = ko.observable(-73.987963);
 		this.loc = ko.observable();
 		this.lat_lng = ko.computed(function() { return self.lat() + " : " + self.lng(); } );
+		this.disabledButtonSaveValue = ko.observable(true);
 		
 		this.options = {
             provider: 'google',
@@ -23,16 +24,10 @@ function ViewModel()
         };
 		
 		
-		
+		// Random position for test
 		this.locateSimplePosition = function(){
-			// GET A RANDOM POSITION FOR TEST
-		
-			//console.log('locateSimplePosition');
-		
 			var map = $('#map').dxMap('instance');
 			var viewModel = this;
-			
-			
 			var lat1 = Math.random() * (20); 
 			var lng1 = Math.random() * (50); 
 			var zoom1 = Math.random() * (10); 
@@ -44,13 +39,55 @@ function ViewModel()
 			viewModel.options.location(mapped);
 			//viewModel.options.zoom(zoom1);
 			console.log('locateSimplePosition:' + mapped);
+		};
+		
+		
+		
+		// start loop GPS
+		this.locateStartWatch = function(){
+		
+			var map = $('#map').dxMap('instance');
+			var viewModel = this;
+		
+			var options = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
+			PhoneGapGeolocation_watchID = navigator.geolocation.watchPosition( 
+				function (position) {
+	
+					console.log('traking updated .... ' + position.coords.latitude + ' ' + position.coords.longitude);
+					viewModel.lat(position.coords.latitude);
+					viewModel.lng(position.coords.longitude);
+					viewModel.options.zoom(5);
+							
+					console.log('locatePosition: ' + viewModel.lat() + ":" + viewModel.lng());
+					viewModel.disabledButtonSaveValue(false);
+							
+					map.addMarker({
+						location: [viewModel.lat(), viewModel.lng()],
+						tooltip: 'Io sono qui 2'
+					}, function (marker) {
+						marker.setDraggable(true);
+						google.maps.event.addListener(marker, 'dragend', function (e) {
+							//if (map.getZoom() > 16) 
+							viewModel.lat(e.latLng.hb);
+							viewModel.lng(e.latLng.ib);
+						});
+					});	
+	
+					$('#output_debug').text(PhoneGapGeolocation_watchID + ' ' + position.timestamp + ' ');
+				},
+				function () {
+							handleNoGeolocation(true);
+						}
 			
-			//viewModel.options.zoom(7);
-			//map.panTo(mapped);
-			//map.option('location.lng',lat1);
-			//map.option('location.lat',lng1);
-			//map.option('zoom',zoom1);
-					
+			, options);
+		};
+		
+		// stop Geolocation and saving .....
+		this.locateStopWatch = function(){
+	
+			PhoneGapGeolocation_stopWatch();
+			$('#output_debug').text('geo stopped!');
+		
 		};
 		
 		this.locatePosition = function(){
@@ -59,12 +96,10 @@ function ViewModel()
 				
 			//viewModel.lat(44.05703525659159);
 			//viewModel.lng(12.56474953315258);
-		
-		
+				
 			console.log('load panel...');
-		
 			viewModel.loadPanelVisible(true);
-		
+			var options = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
 		
 			if (navigator.geolocation) {
 						navigator.geolocation.getCurrentPosition(function (position) {
@@ -87,8 +122,7 @@ function ViewModel()
 									viewModel.lng(e.latLng.ib);
 								});
 							});
-							
-							
+						
 							console.log(' hide panel...');			
 							viewModel.loadPanelVisible(false);
 							
@@ -97,18 +131,14 @@ function ViewModel()
 							var message = "Nuova posizione salvata! Lat : " + viewModel.lat() + " long : " +   viewModel.lng() ;
 							DevExpress.ui.notify({ message: message, position: { of: '.dx-viewport .layout-content' } });
 							
-							
 						}, function () {
 							handleNoGeolocation(true);
-						});
+						}, options
+						);
 					} else {
 						// Browser doesn't support Geolocation
 						handleNoGeolocation(false);
 					};
-					
-			
-		
-					
 		};		
 				
 		this.savePosition = function (){
