@@ -5,7 +5,6 @@
 			<div class="myRule" data-bind="dxList: { dataSource: dataSourceXML, pullRefreshEnabled: false }">
                 <div data-options="dxTemplate : { name: 'item' } " data-bind="dxAction: '#geolocator/{$data._id.$oid}'" style="height: 100%">
 					<strong data-bind="text: $data.datesaved" ></strong>-<strong data-bind="text: $data.timesaved" ></strong><br/>
-					<!-- <div class="product-price">id:<strong data-bind="text: $data._id.$oid" class="product-name"></strong></div> -->
 					<strong data-bind="text: Globalize.format( $data.latitude, 'n2' )"></strong> <strong data-bind="text: Globalize.format($data.longitude,'n2') " ></strong>
 					<div class="product-image-box-right" data-bind="dxButton: { icon: 'remove' , clickAction: function(e) {  $root.handleClickItem(e, $data); return false;} }"></div>
 				</div>

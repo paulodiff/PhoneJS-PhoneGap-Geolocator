@@ -1,7 +1,7 @@
-/* 
+/*! 
 * DevExpress PhoneJS
-* Version: 13.1.4
-* Build date: Jun 6, 2013
+* Version: 13.1.5
+* Build date: Jul 5, 2013
 *
 * Copyright (c) 2012 - 2013 Developer Express Inc. ALL RIGHTS RESERVED
 * EULA: http://phonejs.devexpress.com/EULA
@@ -419,6 +419,8 @@
 }
 .dx-theme-android .dx-field
 {
+  padding: 6px;
+  padding-right: 7px;
   min-height: 36px;
 }
 .dx-theme-android .dx-field-label
@@ -430,9 +432,14 @@
 {
   padding-top: 9px;
   padding-bottom: 8px;
+  padding-left: 8px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+.dx-theme-android .dx-field-value.dx-widget
+{
+  padding-left: 0;
 }
 .dx-theme-android .dx-field-value.dx-editbox, .dx-theme-android .dx-field-value.dx-checkbox, .dx-theme-android .dx-field-value.dx-autocomplete
 {
@@ -441,11 +448,16 @@
 }
 .dx-theme-android .dx-field-value.dx-editbox .dx-editbox-input, .dx-theme-android .dx-field-value.dx-autocomplete>.dx-editbox>.dx-editbox-input
 {
-  padding-top: .45em;
+  padding-top: 7px;
+  padding-bottom: 5px;
 }
 .dx-theme-android .dx-field-value.dx-autocomplete>.dx-editbox
 {
   margin: 0;
+}
+.dx-theme-android .dx-field-value.dx-autocomplete>.dx-editbox>.dx-editbox-input
+{
+  padding-left: 8px;
 }
 .dx-theme-android .dx-field-value.dx-button
 {
@@ -457,14 +469,16 @@
 }
 .dx-theme-android .dx-field-value.dx-lookup
 {
-  padding-top: 8px;
+  margin-top: -1px;
   padding-left: .5em;
-  height: 36px;
+  height: 35px;
 }
 .dx-theme-android .dx-field-value.dx-slider
 {
   padding-left: 16px;
   padding-right: 16px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 .dx-theme-android .dx-field-value.dx-switch
 {
@@ -472,7 +486,7 @@
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-editbox:not(.dx-textarea), .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-checkbox, .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-switch, .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-lookup, .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-slider, .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-autocomplete
 {
-  right: .45em;
+  right: 6px;
   top: 50%;
   position: absolute;
 }
@@ -482,7 +496,7 @@
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-switch
 {
-  margin-top: -9.5px;
+  margin-top: -9px;
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-editbox:not(.dx-textarea), .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-autocomplete, .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-lookup, .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-slider
 {
@@ -490,7 +504,7 @@
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-editbox:not(.dx-textarea)
 {
-  margin-top: -1.15em;
+  margin-top: -18px;
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-editbox:not(.dx-textarea)>.dx-editbox-input
 {
@@ -498,7 +512,9 @@
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-autocomplete
 {
-  margin-top: -1.15em;
+  margin-top: -18px;
+  margin-left: 1px;
+  margin-right: 1px;
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-autocomplete>.dx-editbox
 {
@@ -506,11 +522,14 @@
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-autocomplete>.dx-editbox>.dx-editbox-input
 {
+  padding-left: 8px;
   padding-top: .45em;
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-textarea
 {
   margin: 0;
+  padding-left: 0;
+  margin-left: -8px;
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-textarea>.dx-editbox-input
 {
@@ -519,8 +538,18 @@
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-lookup
 {
-  margin-top: -.65em;
+  margin-top: -19px;
+  margin-left: 2px;
+  margin-right: 1px;
   padding-left: .45em;
+  height: 39px;
+}
+.dx-theme-android .dx-field-value:not(.dx-widget)>.dx-lookup>.dx-lookup-field
+{
+  padding-top: 2px;
+  padding-bottom: 2px;
+  height: 34px;
+  line-height: 34px;
 }
 .dx-theme-android .dx-field-value:not(.dx-widget)>.dx-slider
 {
@@ -532,14 +561,22 @@
 {
   margin-left: 4px;
 }
+.dx-theme-android .dx-field-value:not(.dx-widget)>.dx-datebox>.dx-editbox-input
+{
+  margin-left: -1px;
+}
 .dx-theme-android .dx-button
 {
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;
+  -ms-border-radius: 1px;
+  -o-border-radius: 1px;
   border-radius: 1px;
   background: #3d3d3d;
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
   -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+  -ms-box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+  -o-box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
   padding: 4px;
 }
@@ -606,6 +643,8 @@
   padding: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
   border-radius: 4px;
   background: inherit;
   opacity: .45;
@@ -650,6 +689,8 @@
   padding: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
   border-radius: 4px;
   background: #2c9fc9;
   opacity: .45;
@@ -662,6 +703,56 @@
 .dx-theme-android g.dxChartTitle text
 {
   fill: white !important;
+}
+.dx-theme-android g.series g.series-markers path.dx-chart-hovered-point
+{
+  stroke: #1d2125 !important;
+}
+.dx-theme-android g.series g.series-markers path.dx-chart-selected-point
+{
+  stroke: #1d2125 !important;
+}
+.dx-theme-android .h-axis .axis-elements text, .dx-theme-android .v-axis .axis-elements text
+{
+  fill: white !important;
+  fill-opacity: 1 !important;
+  font-size: 11px !important;
+}
+.dx-theme-android .h-axis .axis-elements span, .dx-theme-android .v-axis .axis-elements span
+{
+  color: #fff !important;
+  opacity: 1 !important;
+  font-size: 11px !important;
+}
+.dx-theme-android .h-axis .axis-elements text.dx-chart-axis-title, .dx-theme-android .v-axis .axis-elements text.dx-chart-axis-title
+{
+  fill: #6f6f6f !important;
+}
+.dx-theme-android .h-axis .axis-elements span.dx-chart-axis-title, .dx-theme-android .v-axis .axis-elements span.dx-chart-axis-title
+{
+  fill: #6f6f6f !important;
+}
+.dx-theme-android .h-axis .axis-grid path, .dx-theme-android .v-axis .axis-grid path, .dx-theme-android .h-axis .axis-line path, .dx-theme-android .v-axis .axis-line path
+{
+  stroke: #4c4c4c;
+  stroke-opacity: .9;
+}
+.dx-theme-android .h-axis .axis-grid vml\:shape, .dx-theme-android .v-axis .axis-grid vml\:shape, .dx-theme-android .h-axis .axis-line vml\:shape, .dx-theme-android .v-axis .axis-line vml\:shape
+{
+  color: #4c4c4c;
+  opacity: .9;
+}
+.dx-theme-android .dxLegendSeries text
+{
+  fill: white !important;
+  fill-opacity: 1 !important;
+  font-size: 11px !important;
+}
+.dx-theme-android .dxLegendSeries span
+{
+  color: #fff !important;
+  opacity: 1 !important;
+  font-size: 11px !important;
 }
 .dx-theme-android .dx-switch
 {
@@ -692,6 +783,8 @@
   background: #525253;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
   border-radius: 2px;
   margin-left: 1px;
   border: 1px solid;
@@ -782,6 +875,8 @@
   margin-top: -5px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   border-radius: 50%;
   background: rgba(50,180,230,.85);
   background: -webkit-gradient(radial,center center,0,center center,100%,color-stop(0%,rgba(50,180,230,.85)),color-stop(100%,rgba(50,180,230,.3)));
@@ -800,6 +895,8 @@
   display: block;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   border-radius: 50%;
   position: absolute;
   margin-left: -6px;
@@ -856,6 +953,8 @@
 {
   -webkit-box-shadow: inset 0 -5px #09c;
   -moz-box-shadow: inset 0 -5px #09c;
+  -ms-box-shadow: inset 0 -5px #09c;
+  -o-box-shadow: inset 0 -5px #09c;
   box-shadow: inset 0 -5px #09c;
 }
 .dx-theme-android .dx-tabs .dx-tab.dx-state-active
@@ -863,6 +962,8 @@
   background: rgba(44,159,201,.8);
   -webkit-box-shadow: inset 0 -1px #09c;
   -moz-box-shadow: inset 0 -1px #09c;
+  -ms-box-shadow: inset 0 -1px #09c;
+  -o-box-shadow: inset 0 -1px #09c;
   box-shadow: inset 0 -1px #09c;
 }
 .dx-theme-android .dx-tabs .dx-tab.dx-state-active .dx-tab-text
@@ -983,6 +1084,8 @@
   background: transparent;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
   box-shadow: none;
 }
 .dx-theme-android .dx-toolbar .dx-toolbar-label
@@ -1094,6 +1197,8 @@
   background: #282828;
   -webkit-box-shadow: 1px 2px 14px 3px rgba(0,0,0,.6);
   -moz-box-shadow: 1px 2px 14px 3px rgba(0,0,0,.6);
+  -ms-box-shadow: 1px 2px 14px 3px rgba(0,0,0,.6);
+  -o-box-shadow: 1px 2px 14px 3px rgba(0,0,0,.6);
   box-shadow: 1px 2px 14px 3px rgba(0,0,0,.6);
 }
 .dx-theme-android .dx-popup .dx-overlay-content .dx-popup-title
@@ -1116,6 +1221,7 @@
 }
 .dx-theme-android .dx-dialog-root .dx-overlay-content .dx-dialog-buttons
 {
+  width: 100%;
   padding: 10px 0 0 0;
 }
 .dx-theme-android .dx-dialog-root .dx-overlay-content .dx-dialog-buttons:before
@@ -1134,12 +1240,16 @@
   padding: 0;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
   box-shadow: none;
 }
 .dx-theme-android .dx-dialog-root .dx-overlay-content .dx-dialog-buttons .dx-button:nth-child(even)
 {
   -webkit-box-shadow: inset 1px 0 0 rgba(255,255,255,.3);
   -moz-box-shadow: inset 1px 0 0 rgba(255,255,255,.3);
+  -ms-box-shadow: inset 1px 0 0 rgba(255,255,255,.3);
+  -o-box-shadow: inset 1px 0 0 rgba(255,255,255,.3);
   box-shadow: inset 1px 0 0 rgba(255,255,255,.3);
 }
 .dx-theme-android .dx-dialog-root .dx-overlay-content .dx-dialog-buttons .dx-button:only-child
@@ -1166,10 +1276,14 @@
   margin: 1px 6px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   border-radius: 50%;
-  -webkit-box-shadow: 0 0 1px 1px rgba(130,130,130,.7);
-  -moz-box-shadow: 0 0 1px 1px rgba(130,130,130,.7);
-  box-shadow: 0 0 1px 1px rgba(130,130,130,.7);
+  -webkit-box-shadow: 0 0 1px rgba(80,80,80,.7);
+  -moz-box-shadow: 0 0 1px rgba(80,80,80,.7);
+  -ms-box-shadow: 0 0 1px rgba(80,80,80,.7);
+  -o-box-shadow: 0 0 1px rgba(80,80,80,.7);
+  box-shadow: 0 0 1px rgba(80,80,80,.7);
 }
 .dx-theme-android .dx-gallery .dx-gallery-indicator .dx-gallery-indicator-item.dx-gallery-indicator-item-selected
 {
@@ -1188,6 +1302,13 @@
 }
 .dx-theme-android .dx-lookup .dx-lookup-field
 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  height: 20px;
+  line-height: 20px;
   padding-right: 24px;
 }
 .dx-theme-android .dx-lookup .dx-lookup-field:before
@@ -1208,8 +1329,6 @@
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  height: 20px;
-  line-height: 20px;
 }
 .dx-theme-android .dx-lookup-popup.dx-lookup-popup-search .dx-popup-content:not(.dx-lookup-cancel)
 {
@@ -1321,6 +1440,8 @@
   border-color: transparent;
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
   border-radius: 40px;
 }
 .dx-theme-android .dx-loadindicator-wrapper .dx-loadindicator-icon .dx-loadindicator-segment0
@@ -1476,14 +1597,12 @@
   background: #464646;
   border-color: #666;
 }
-.dx-theme-android .dx-autocomplete .dx-textbox .dx-editbox-input
-{
-  padding: .5em 1em;
-}
 .dx-theme-android .dx-popup.dx-autocomplete-popup .dx-overlay-content
 {
   -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.2);
   -moz-box-shadow: 0 1px 5px rgba(0,0,0,.2);
+  -ms-box-shadow: 0 1px 5px rgba(0,0,0,.2);
+  -o-box-shadow: 0 1px 5px rgba(0,0,0,.2);
   box-shadow: 0 1px 5px rgba(0,0,0,.2);
   background-color: transparent;
 }
@@ -1519,6 +1638,8 @@
 {
   -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.2);
   -moz-box-shadow: 0 1px 5px rgba(0,0,0,.2);
+  -ms-box-shadow: 0 1px 5px rgba(0,0,0,.2);
+  -o-box-shadow: 0 1px 5px rgba(0,0,0,.2);
   box-shadow: 0 1px 5px rgba(0,0,0,.2);
 }
 .dx-theme-android .dx-popup.dx-dropdownmenu-popup .dx-overlay-content .dx-popup-content
@@ -1537,9 +1658,13 @@
 {
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;
+  -ms-border-radius: 1px;
+  -o-border-radius: 1px;
   border-radius: 1px;
   -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.13);
   -moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,.13);
+  -ms-box-shadow: 0 1px 3px 0 rgba(0,0,0,.13);
+  -o-box-shadow: 0 1px 3px 0 rgba(0,0,0,.13);
   box-shadow: 0 1px 3px 0 rgba(0,0,0,.13);
 }
 .dx-theme-android .dx-toast .dx-toast-content .dx-toast-icon

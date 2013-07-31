@@ -14,7 +14,17 @@
                     }
                 });
             }
+
             return this.callBase.apply(this, arguments);
+        },
+
+        _onRenderComplete: function(viewInfo) {
+            var $toolbarBottom = viewInfo.renderResult.$markup.find(".layout-toolbar-bottom"),
+                toolbarBottom = $toolbarBottom.data("dxToolbar");
+
+            if(toolbarBottom && toolbarBottom.option("items").length) {
+                viewInfo.renderResult.$markup.find(".layout-frame").addClass("has-toolbar-bottom");
+            }
         }
     });
 

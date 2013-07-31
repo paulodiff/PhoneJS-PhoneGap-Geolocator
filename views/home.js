@@ -11,6 +11,9 @@
 		gotoGeolocation: function(){
 			MyApp.app.navigate('geolocation');
 		},
+		gotoGeolocationLocal: function(){
+			MyApp.app.navigate('demo1');
+		},		
 		gotoDemo: function(){
 			MyApp.app.navigate('geolocator/51de5f6be4b0d57a4b05316b');
 		},

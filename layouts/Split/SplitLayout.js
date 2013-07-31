@@ -36,7 +36,7 @@
         },
 
         _showViewImpl: function(viewInfo, direction) {
-            this._viewEngine.renderCompleteView(viewInfo);//TODO remove workaround, refix B235797
+            this._viewEngine.renderCompleteView(viewInfo, this.$viewPort);//TODO remove workaround, refix B235797
 
             var $leftSideContent = this.$viewPort.find(".left-content").children(),
                 $markup = viewInfo.renderResult.$markup,
@@ -209,15 +209,15 @@
 
         setAppbarBehavior: function(state) {
             $(".split-layout").toggleClass("have-static-appbar", !state);
-            this._toggleAppBarState(!state);
             this._appbarBehavior = state;
+            this._toggleAppBarState(!state);
         },
 
         _toggleAppBarState: function(state) {
-            if(!this.root._appBarHasCommands() || !this._appbarBehavior)
+            if(!this.root._appBarHasCommands())
                 return;
 
-            this.root.$viewPort.find(".dx-app-bar").toggleClass("dx-app-bar-visible", state);
+            this.root.$viewPort.find(".dx-app-bar").toggleClass("dx-app-bar-visible", !this._appbarBehavior || state);
         },
 
         _isVericalDirection: function(x, y) {

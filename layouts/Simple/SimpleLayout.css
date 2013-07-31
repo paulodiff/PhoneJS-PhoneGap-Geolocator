@@ -38,6 +38,12 @@
     width: 100%;
 }
 
+.win8phone-layout .layout-frame.has-toolbar-bottom {
+    height: auto;
+    top: 0;
+    bottom: 40px;
+}
+
 /* navigation */
 .win8phone-layout .navigation-list.dx-list .dx-list-item .dx-navigation-item {
 	line-height: 24px;

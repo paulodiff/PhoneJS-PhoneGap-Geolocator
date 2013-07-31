@@ -45,7 +45,6 @@
 
         _showViewImpl: function(viewInfo, direction) {
             var self = this;
-            self._initNavigation(viewInfo.renderResult.$markup);
             var promise = self.callBase(viewInfo, direction);
             promise.done(function() {
                 self._disableTransitions = false;
@@ -56,11 +55,13 @@
         _onRenderComplete: function(viewInfo) {
             var self = this;
 
+            self._initNavigation(viewInfo.renderResult.$markup);
+
             if(self._isPlaceholderEmpty(viewInfo)) {
                 self._initNavigationButton(viewInfo.renderResult.$markup);
             }
 
-            var $toolbarBottom = viewInfo.renderResult.$markup.find(".layout-toolbar-bottom, .view-toolbar-bottom"),
+            var $toolbarBottom = viewInfo.renderResult.$markup.find(".layout-toolbar-bottom"),
                 toolbarBottom = $toolbarBottom.data("dxToolbar");
 
             if(toolbarBottom && toolbarBottom.option("items").length) {
@@ -72,20 +73,29 @@
 
         _initNavigationButton: function($markup) {
             var self = this,
-                toolbar = $markup.find(".layout-toolbar").data("dxToolbar");
+                $toolbar = $markup.find(".layout-toolbar"),
+                toolbar = $toolbar.data("dxToolbar");
+            
+            var showNavButton = function ($markup, $navButtonItem) {
+                $navButtonItem = $navButtonItem || $toolbar.find(".nav-button-item");
+                $navButtonItem.show();
+                $navButtonItem.find(".nav-button")
+                    .data("dxButton")
+                    .option("clickAction", $.proxy(self._toggleNavigation, self, $markup));
+            };
+
+            showNavButton($markup);
 
             toolbar.option("itemRenderedAction", function(e) {
                 var data = e.itemData,
                     $element = e.itemElement;
 
                 if(data.template === "nav-button") {
-                    $element.show();
-                    $element.find(".nav-button")
-                        .data("dxButton")
-                        .option("clickAction", $.proxy(self._toggleNavigation, self, $markup));
+                    $.proxy(showNavButton, self, $element);
                 }
             });
         },
+
 
         _initNavigation: function($markup) {
             this._isNavigationVisible = false; 

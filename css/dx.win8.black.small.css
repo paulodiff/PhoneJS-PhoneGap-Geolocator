@@ -1,7 +1,7 @@
-/* 
+/*! 
 * DevExpress PhoneJS
-* Version: 13.1.4
-* Build date: Jun 6, 2013
+* Version: 13.1.5
+* Build date: Jul 5, 2013
 *
 * Copyright (c) 2012 - 2013 Developer Express Inc. ALL RIGHTS RESERVED
 * EULA: http://phonejs.devexpress.com/EULA
@@ -513,6 +513,8 @@
 {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   border-radius: 50%;
   padding: 0;
 }
@@ -588,6 +590,56 @@
 .dx-theme-win8 g.dxChartTitle text
 {
   fill: white !important;
+}
+.dx-theme-win8 g.series g.series-markers path.dx-chart-hovered-point
+{
+  stroke: black !important;
+}
+.dx-theme-win8 g.series g.series-markers path.dx-chart-selected-point
+{
+  stroke: black !important;
+}
+.dx-theme-win8 .h-axis .axis-elements text, .dx-theme-win8 .v-axis .axis-elements text
+{
+  fill: white !important;
+  fill-opacity: 1 !important;
+  font-size: 11px !important;
+}
+.dx-theme-win8 .h-axis .axis-elements span, .dx-theme-win8 .v-axis .axis-elements span
+{
+  color: #fff !important;
+  opacity: 1 !important;
+  font-size: 11px !important;
+}
+.dx-theme-win8 .h-axis .axis-elements text.dx-chart-axis-title, .dx-theme-win8 .v-axis .axis-elements text.dx-chart-axis-title
+{
+  fill: #6f6f6f !important;
+}
+.dx-theme-win8 .h-axis .axis-elements span.dx-chart-axis-title, .dx-theme-win8 .v-axis .axis-elements span.dx-chart-axis-title
+{
+  fill: #6f6f6f !important;
+}
+.dx-theme-win8 .h-axis .axis-grid path, .dx-theme-win8 .v-axis .axis-grid path, .dx-theme-win8 .h-axis .axis-line path, .dx-theme-win8 .v-axis .axis-line path
+{
+  stroke: #4c4c4c;
+  stroke-opacity: .9;
+}
+.dx-theme-win8 .h-axis .axis-grid vml\:shape, .dx-theme-win8 .v-axis .axis-grid vml\:shape, .dx-theme-win8 .h-axis .axis-line vml\:shape, .dx-theme-win8 .v-axis .axis-line vml\:shape
+{
+  color: #4c4c4c;
+  opacity: .9;
+}
+.dx-theme-win8 .dxLegendSeries text
+{
+  fill: white !important;
+  fill-opacity: 1 !important;
+  font-size: 11px !important;
+}
+.dx-theme-win8 .dxLegendSeries span
+{
+  color: #fff !important;
+  opacity: 1 !important;
+  font-size: 11px !important;
 }
 .dx-theme-win8 .dx-switch
 {
@@ -705,6 +757,8 @@
   border: 2px solid #fff;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   border-radius: 50%;
 }
 .dx-theme-win8 .dx-tabs .dx-tab .dx-tab-text
@@ -735,7 +789,7 @@
 }
 .dx-theme-win8 .dx-editbox .dx-editbox-input
 {
-  min-height: 28px;
+  min-height: 33px;
   min-width: 64px;
   margin: 4px 0;
   border: 2px solid #888;
@@ -782,6 +836,8 @@
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+  opacity: .95;
+  background: #1d1d1d;
 }
 .dx-theme-win8 .dx-toolbar .dx-button-text
 {
@@ -807,6 +863,8 @@
   border: 2px solid #fff;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   border-radius: 50%;
 }
 .dx-theme-win8 .dx-toolbar .dx-toolbar-item.dx-toolbar-button .dx-button.dx-state-active
@@ -906,10 +964,7 @@
   font-weight: 200;
   line-height: 1.2;
   color: #fff;
-  -webkit-transition: -webkit-transform,100ms;
-  -moz-transition: -moz-transform,100ms;
-  -o-transition: -o-transform,100ms;
-  transition: transform,100ms;
+  -ms-transition: transform,100ms;
   -ms-backface-visibility: hidden;
 }
 .dx-theme-win8 .dx-list .dx-list-item:hover
@@ -948,13 +1003,13 @@
 }
 .dx-theme-win8 .dx-dialog-root .dx-overlay-shader
 {
-  background-color: #000;
+  background-color: #1d1d1d;
 }
 .dx-theme-win8 .dx-dialog-root .dx-overlay-content
 {
-  width: 70% !important;
-  padding: 15px 15%;
-  color: #000;
+  width: 60% !important;
+  padding: 15px 20%;
+  color: #1d1d1d;
   background: #fff;
 }
 .dx-theme-win8 .dx-dialog-root .dx-overlay-content .dx-popup-title
@@ -963,13 +1018,19 @@
   background: none;
   background-image: none;
   font-size: 150%;
+  padding: 0 10px;
 }
 .dx-theme-win8 .dx-dialog-root .dx-overlay-content .dx-dialog-buttons
 {
+  width: auto;
+  height: 30px;
   float: right;
 }
 .dx-theme-win8 .dx-dialog-root .dx-overlay-content .dx-dialog-button.dx-button
 {
+  width: 52px;
+  height: 24px;
+  padding: 0 4px;
   color: #fff;
   border: 2px solid #464646;
   background-color: #464646;
@@ -987,8 +1048,10 @@
 .dx-theme-win8 .dx-dialog-root .dx-overlay-content .dx-dialog-button.dx-button .dx-button-text
 {
   line-height: normal;
-  padding-left: 23px;
-  padding-right: 23px;
+}
+.dx-theme-win8 .dx-dialog-root .dx-overlay-content .dx-dialog-button.dx-button:nth-child(even)
+{
+  margin-left: 5px;
 }
 .dx-theme-win8 .dx-gallery
 {
@@ -1003,6 +1066,8 @@
   background: #fff;
   -webkit-box-shadow: 0 0 1px 1px rgba(50,50,50,.3);
   -moz-box-shadow: 0 0 1px 1px rgba(50,50,50,.3);
+  -ms-box-shadow: 0 0 1px 1px rgba(50,50,50,.3);
+  -o-box-shadow: 0 0 1px 1px rgba(50,50,50,.3);
   box-shadow: 0 0 1px 1px rgba(50,50,50,.3);
   width: 15px;
   height: 6px;
@@ -1064,6 +1129,11 @@
 {
   background-color: #bb1000;
 }
+.dx-theme-win8 .dx-lookup-popup .dx-popup-content
+{
+  margin-left: 0;
+  margin-right: 0;
+}
 .dx-theme-win8 .dx-lookup-popup .dx-popup-content.dx-lookup-cancel
 {
   bottom: 105px;
@@ -1071,6 +1141,11 @@
 .dx-theme-win8 .dx-lookup-popup .dx-popup-content.dx-lookup-cancel .dx-button.dx-lookup-cancel
 {
   margin: 10px 0;
+  float: right;
+}
+.dx-theme-win8 .dx-lookup-popup .dx-popup-content.dx-lookup-cancel .dx-list
+{
+  padding-bottom: 3px;
 }
 .dx-theme-win8 .dx-loadindicator.dx-loadindicator-large .dx-loadindicator-wrapper .dx-loadindicator-icon .dx-loadindicator-win8-segment .dx-loadindicator-win8-inner-segment
 {
@@ -1117,6 +1192,8 @@
   left: 0;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
   border-radius: 100%;
 }
 .dx-theme-win8 .dx-loadindicator-wrapper .dx-loadindicator-icon .dx-loadindicator-win8-segment.dx-loadindicator-win8-segment1
@@ -1367,7 +1444,6 @@
 .dx-theme-win8 .dx-autocomplete .dx-textbox .dx-editbox-input
 {
   border: 2px solid #888;
-  padding: .5em 1em;
 }
 .dx-theme-win8 .dx-popup.dx-autocomplete-popup .dx-overlay-content
 {
