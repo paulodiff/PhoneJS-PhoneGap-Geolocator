@@ -1,6 +1,6 @@
-﻿<div data-options="dxView: { name: 'demo1', title: 'demo2', layout : 'navbar' }">
-     <div data-bind="dxCommand: {  location: 'save', icon: 'save', action: addGeolocation, showIcon: true }"></div>
-	 <div data-bind="dxCommand: {  location: 'create', icon: 'remove', action: delGeolocations, showIcon: true }"></div>
+﻿<div data-options="dxView: { name: 'demo1', title: 'Posizioni salvate.', layout : 'navbar' }">
+     <div data-bind="dxCommand: {  location: 'save', icon: 'save', action: add_Geolocation, showIcon: true }"></div>
+	 <div data-bind="dxCommand: {  location: 'create', icon: 'remove', action: del_Geolocations, showIcon: true }"></div>
 
 
 	<div data-options="dxContent : { targetPlaceholder: 'content' } " >
@@ -10,9 +10,10 @@
 
 	<div class="list-indentation">
 			<div class="myRule" data-bind="dxList: { dataSource: geopositionsArray }">
-                <div data-options="dxTemplate : { name: 'item' } " data-bind="dxAction: '#geolocator/{$data._id.$oid}'" style="height: 100%">
-					<strong data-bind="text: $data.datesaved" ></strong>-<strong data-bind="text: $data.timesaved" ></strong><br/>
-					<strong data-bind="text: Globalize.format( $data.latitude, 'n2' )"></strong> <strong data-bind="text: Globalize.format($data.longitude,'n2') " ></strong>
+                <div data-options="dxTemplate : { name: 'item' } " data-bind="dxAction: '#geolocator/{$data.geo_id}'" style="height: 100%">
+					<strong data-bind="text: $data.name" ></strong><br/>
+					<small data-bind="text: $data.datesaved" ></small>-<small data-bind="text: $data.timesaved" ></small><br/>
+					<small data-bind="text: Globalize.format( $data.latitude, 'n2' )"></small> <small data-bind="text: Globalize.format($data.longitude,'n2') " ></small>
 					<div class="product-image-box-right" data-bind="dxButton: { icon: 'remove' , clickAction: function(e) {  $root.handleClickItem(e, $data); return false;} }"></div>
 				</div>
             </div>

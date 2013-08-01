@@ -1,32 +1,16 @@
-﻿<div data-options="dxView : { name: 'home', title: 'Home', layout: 'navbar' } " >
+﻿<div  data-options="dxView : { name: 'home', title: 'LocatoRR...' } " >
     <div class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " >
-	
 
+		<div>
+			<img class="logo" id="logo" src="img/cordova_128.png">
+		</div>
 		<div class="dx-fieldset settings-form">
 			<div class="dx-field">
-				<div class="dx-field-label">LocatoRR</div>
+				  <div class="myButton" data-bind="dxButton: { icon: 'save', text: 'Salva posizione corrente', clickAction: gotoGeolocSimple }"></div>	
 			</div>
 			<div class="dx-field">
-				  <div style="clear:both; width: 100%; " data-bind="dxButton: { icon: 'save', text: 'Salva posizione', clickAction: gotoGeolocation }"></div>	
-			</div>
-				<div class="dx-field">
-				  <div style="clear:both; width: 100%;" data-bind="dxButton: { icon: 'find', text: 'Cerca posizione', clickAction: gotoSearchPosition }"></div>	
-			  </div>
-			  <div class="dx-field with-lookup-arrow" data-bind="event: { click: gotoSavePosition }">
-				  <div class ="dx-field-label">[SALVA POSIZIONE]</div>
-			  </div>
-			  <div class="dx-field with-lookup-arrow" data-bind="event: { click: gotoSearchPosition }">
-				  <div class ="dx-field-label">[CERCA POSIZIONE]</div>
-			  </div>
-			  <div class="dx-field with-lookup-arrow" data-bind="event: { click: gotoCompass }">
-				  <div class ="dx-field-label">[BUSSOLA]</div>
-			  </div>
-			  <div class="dx-field with-lookup-arrow" data-bind="event: { click: gotoGeolocationLocal}">
-				  <div class ="dx-field-label">[GEOLOCATION LOCAL]</div>
-			  </div>
-			  <div class="dx-field with-lookup-arrow" data-bind="event: { click: gotoDemo}">
-				  <div class ="dx-field-label">[DEMO]</div>
-			  </div>
+				  <div class="myButton" data-bind="dxButton: { icon: 'find', text: 'Cerca posizione precedente salvata', clickAction: gotoGeolocationLocal }"></div>	
+		  </div>
 		</div>
 	</div>
 </div>

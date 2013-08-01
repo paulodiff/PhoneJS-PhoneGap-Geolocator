@@ -14,6 +14,9 @@
 		gotoGeolocationLocal: function(){
 			MyApp.app.navigate('demo1');
 		},		
+		gotoGeolocSimple: function(){
+			MyApp.app.navigate('geolocSimple');
+		},		
 		gotoDemo: function(){
 			MyApp.app.navigate('geolocator/51de5f6be4b0d57a4b05316b');
 		},

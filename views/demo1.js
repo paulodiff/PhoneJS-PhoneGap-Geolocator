@@ -3,52 +3,84 @@
 	//var geopositionsArray = ko.observableArray(null);
 	var GEOLOCATIONS_KEY = "glck";	
 	var geopositionsArray;
+	var current_geo_id;
 
-	function addGeolocation(){ 
+	function add_Geolocation_old(){ 
 			//alert('Hello world'); 
 			var geoItem = MyApp.createGeolocationViewModel();
 			geoItem.randomData();
 			console.log(geoItem);
 			console.log(geoItem.toJS());
 			geopositionsArray.push(geoItem.toJS());
-			saveGeolocations();
+			save_Geolocations();
 	}
 	
-	function delGeolocations(){ 
-			geopositionsArray.removeAll();
-			saveGeolocations();
+	
+	function add_Geolocation(){ 
+			//alert('add_Geolocation'); 
+			var geoItem = MyApp.createGeolocationViewModel();
+			geoItem.randomData();
+			console.log(geoItem);
+			console.log(geoItem.toJS());
+			MyApp.insertGeolocation(geoItem.toJS());
+	}
+	
+	
+	function del_Geolocations(){ 
+			MyApp.clearAllGeolocations();
+			//geopositionsArray.removeAll();
+			//save_Geolocations();
 	}
 		
 	function handleClickItem(e, itemData) {
-			console.log('buttonClick : ...');
+			current_geo_id = itemData.geo_id;
+			console.log('buttonClick : ' + 'Click for Id=' + itemData.geo_id + ', Name=' + itemData.latitude);
+			console.log(' test : ' + current_geo_id);
 			this.actionSheetVisible(true);
 			return false;
     }
 
+	function deleteListItem(){
+		console.log('deleteListItem id:' + current_geo_id);
+		MyApp.deleteGeolocation(current_geo_id);
+		var message = "Item deleted! Id : " + current_geo_id;
+		DevExpress.ui.notify({ message: message, position: { of: '.dx-viewport .layout-content' } });
+
+	}
 	
-	function saveGeolocations() {
+	function save_Geolocations() {
 		console.log(' saving ... : ' + JSON.stringify(geopositionsArray()));
         localStorage.setItem(GEOLOCATIONS_KEY, JSON.stringify(geopositionsArray()));
     }
 
 	
 	var actionSheetVisible = ko.observable(false);
-	var actionSheetData = [	{text:"Delete", clickAction: function(){ self.deleteItem(); }} 	];
+	var actionSheetData = [	{text:"Delete", clickAction: function(){ deleteListItem(); }} 	];
 
+	
+	/*
 	// load item from storage
 	var storageData = localStorage.getItem(GEOLOCATIONS_KEY);
 	console.log(storageData);
 	var data = storageData ? JSON.parse(storageData) : [];
 	console.log(data);
 	geopositionsArray = ko.observableArray(data);
+	*/
+	
+	geopositionsArray = MyApp.geolocations;
+	
+	
+	
 	
 	return {
-        addGeolocation: addGeolocation,
-		delGeolocations: delGeolocations,
+        add_Geolocation: add_Geolocation,
+		del_Geolocations: del_Geolocations,
         geopositionsArray: geopositionsArray,
 		actionSheetData: actionSheetData,
 		actionSheetVisible: actionSheetVisible,
-        handleClickItem: handleClickItem
+        handleClickItem: handleClickItem,
+		current_geo_id: current_geo_id,
+		deleteListItem: deleteListItem
     };
 
 	

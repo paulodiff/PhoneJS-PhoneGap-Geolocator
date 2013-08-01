@@ -159,6 +159,17 @@ MyApp.geolocator = function (params) {
 		
 		if(params.id) {
 		
+			console.log('geolocator ... params.id' + params.id);
+		
+		/* get from local storage */
+		
+			var geoItem = MyApp.getGeolocation(params.id);
+			self.finalLatitude(geoItem.latitude);
+			self.finalLongitude(geoItem.longitude);
+		
+		
+		/* get from mongo db
+		
 		var http_url = 'https://api.mongolab.com/api/1/databases/demo_123/collections/geolocations/' +  params.id + '?apiKey=DFfH9ZxX0DdVQCHKMphyMwteiLdvT23_';
 		$.ajax({
             type: "GET",
@@ -176,6 +187,8 @@ MyApp.geolocator = function (params) {
 				self.finalLongitude(data.longitude);
             }
         });
+
+		*/
 		
 		} else {
 				self.finalLatitude(20);

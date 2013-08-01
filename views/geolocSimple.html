@@ -1,0 +1,40 @@
+﻿<div data-options="dxView : { name: 'geolocSimple', title: 'geolocSimple' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " >
+		<div data-bind="dxLoadPanel:{message: 'Gps ...', visible: loadPanelVisible}"></div>
+        
+		<div class="dx-fieldset">
+
+			<div class="dx-field">
+				<div class="myButton" data-bind="dxButton: { text: 'Localizza', clickAction: $root.locateStartWatch, height: 50 } "></div>
+			</div>
+			<div class="dx-field">
+                <div class="dx-field-label">Descrizione</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: name }"></div>
+            </div>
+			<div class="dx-field">
+                <div class="dx-field-label">Latitude</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: lat }"></div>
+            </div>
+			<div class="dx-field">
+                <div class="dx-field-label">Longitude</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: lng }"></div>
+            </div>
+			<div class="dx-field">
+                <div class="dx-field-label">Accuratezza</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: accuracy }"></div>
+            </div>
+			<div class="dx-field">
+                <div class="dx-field-label">Timestamp</div>
+                <div class="dx-field-value" data-bind="dxTextBox: { value: timestamp }"></div>
+            </div>
+			<div class="dx-field">
+				<div class="myButton" data-bind="dxButton: { text: 'Salva', clickAction: $root.locateStopWatch, disabled:disabledButtonSaveValue , type: 'success' } "></div>
+			</div>
+			
+			<div id="output_debug"></div>
+        </div>
+				
+        
+
+    </div>
+</div>

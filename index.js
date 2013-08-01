@@ -58,7 +58,7 @@ window.MyApp = {};
 			  },
 			  {
 				title: "Geo List",
-				action: "#geopositionsList",
+				action: "#demo1",
 				icon: "tags"
 			  },
 			  /*{
@@ -68,7 +68,7 @@ window.MyApp = {};
 			  },*/
 			   {
 				title: "Geolocation",
-				action: "#geolocation",
+				action: "#geolocSimple",
 				icon: "globe"
 			  },
 			  {
@@ -110,6 +110,8 @@ window.MyApp = {};
 		
 		// call to library of PhoneGap-Common.js
 		initPhoneGap();
+	
+		MyApp.initUserData();
 	
 		/*
 	
