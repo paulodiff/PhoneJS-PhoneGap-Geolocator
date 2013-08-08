@@ -73,7 +73,7 @@ function onDeviceReady() {
     //executeCallback();
 	
 	// register push notifications...
-	RegisterPushNotification();
+	//RegisterPushNotification();
 	
 }
 
@@ -310,6 +310,34 @@ function onResume() {
 		console.log("Token Handler " + msg);
 	}
 
+	
+	function initPushwoosh()
+	{
+		var pushNotification = window.plugins.pushNotification;
+		pushNotification.onDeviceReady();
+	 
+		pushNotification.registerDevice({ projectid: "1045204524713", appid : "F19B9-D7122" },
+			function(status) {
+				var pushToken = status;
+				console.warn('push token: ' + pushToken);
+			},
+			function(status) {
+				console.warn(JSON.stringify(['failed to register ', status]));
+			}
+		);
+	 
+		document.addEventListener('push-notification', function(event) {
+			var title = event.notification.title;
+				var userData = event.notification.userdata;
+	 
+				if(typeof(userData) != "undefined") {
+				console.warn('user data: ' + JSON.stringify(userData));
+			}
+	 
+			navigator.notification.alert(title);
+		});
+	}
+	
 
 	function RegisterPushNotification(){
 	
@@ -318,7 +346,7 @@ function onResume() {
 		var pushNotification = window.plugins.pushNotification;
         // TODO: Enter your own GCM Sender ID in the register call for Android
         if (device.platform == 'android' || device.platform == 'Android') {
-            pushNotification.register(PushNotificationSuccessHandler, PushNotificationErrorHandler,{"senderID":"1045204524713","ecb":"PushNotificationAndroid"});
+			pushNotification.register(PushNotificationSuccessHandler, PushNotificationErrorHandler,{"senderID":"1045204524713","ecb":"PushNotificationAndroid"});
         }
         else {
             pushNotification.register(PushNotificationTokenHandler,PushNotificationErrorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"PushNotificationIOS"});
@@ -336,6 +364,17 @@ function onResume() {
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
                     alert('registration id = '+e.regid);
+					
+			// Your GCM push server needs to know the regID before it can push to this device
+            // here is where you might want to send it the regID for later use.
+             PushWoosh.appCode = "F19B9-D7122";
+             PushWoosh.register(e.regid, function(data) {
+                         alert("PushWoosh register success: " + JSON.stringify(data));
+                     }, function(errorregistration) {
+                         alert("Couldn't register with PushWoosh" +  errorregistration);
+                     });
+					
+					
                 }
             break;
 

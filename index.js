@@ -7,6 +7,7 @@ window.MyApp = {};
 
 	var myapp  = window.MyApp;
     //var device = 
+	//DevExpress.devices.current("iPhone");
 	DevExpress.devices.current("iPhone");
 	var device = DevExpress.devices.current();
 	$.extend(myapp, {

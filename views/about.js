@@ -101,6 +101,10 @@
 		);
 	};
 
+	function StartPushNotification(){
+		initPushwoosh();
+	};
+	
     return {
 		latitude: latitude,
 		longitude: longitude,
@@ -115,6 +119,7 @@
 		StopPhoneGapGeolocation : StopPhoneGapGeolocation,
 		StartPhoneGapGeolocation  : StartPhoneGapGeolocation,
 		StartBarcodeScanner: StartBarcodeScanner,
+		StartPushNotification: StartPushNotification,
 		buttonClicked: buttonClicked		
 	};
 };
