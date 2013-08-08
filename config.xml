@@ -94,5 +94,9 @@
 	<!-- test per il barcode scanner .... -->
 	<gap:plugin name="com.phonegap.plugins.barcodescanner" />
 	
+	<!-- test per la push notification -->
+	<gap:plugin name="com.adobe.plugins.pushplugin" />
+	
+	
 
 </widget>	
