@@ -71,15 +71,21 @@ function ViewModel()
 		};
 		
 		this.viewShown = function () {
+			var viewModel = this;
 			console.log('viewShown ... called!');
 			console.log('Start loop for ShakeEvents...! ');
+			$('#output_debug').text('@init...');
 						
 			var options = { frequency: 1000 };
 			PhoneGapAccelerometer_watchID = navigator.accelerometer.watchAcceleration( 
 				function (acceleration) {
+					$('#output_debug').text('Acceleration : ' + acceleration.x + "@" + acceleration.y + '@' + acceleration.z);
 					if( ( acceleration.x > 10 ) || ( acceleration.x > 10 ) || ( acceleration.x > 10 ) )         {
 						var message = "Event > 10 raised!";
 						DevExpress.ui.notify({ message: message, position: { of: '.dx-viewport .layout-content' } });
+						
+						this.savePosition();
+						
 					}
 				
 				},
