@@ -438,6 +438,19 @@ function onResume() {
     }
 	
 	
+	function PhoneGapAccelerometer_onTrigger(acceleration) {
+		console.log('PhoneGapAccelerometer_onSuccess ');
+		
+        var txt_innerHTML = 'Acceleration X: ' + acceleration.x         + '<br />' +
+                            'Acceleration Y: ' + acceleration.y         + '<br />' +
+                            'Acceleration Z: ' + acceleration.z         + '<br />' +
+                            'Timestamp:      ' + acceleration.timestamp + '<br />';
+							
+		$('#phonegap_output').text(txt_innerHTML);
+		
+    }
+
+	
 
     function PhoneGapAccelerometer_onSuccess(acceleration) {
 		console.log('PhoneGapAccelerometer_onSuccess ');

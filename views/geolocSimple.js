@@ -70,6 +70,32 @@ function ViewModel()
 		
 		};
 		
+		this.viewShown = function () {
+			console.log('viewShown ... called!');
+			console.log('Start loop for ShakeEvents...! ');
+						
+			var options = { frequency: 1000 };
+			PhoneGapAccelerometer_watchID = navigator.accelerometer.watchAcceleration( 
+				function (acceleration) {
+					if( ( acceleration.x > 10 ) || ( acceleration.x > 10 ) || ( acceleration.x > 10 ) )         {
+						var message = "Event > 10 raised!";
+						DevExpress.ui.notify({ message: message, position: { of: '.dx-viewport .layout-content' } });
+					}
+				
+				},
+				function (){
+					console.log('Error ACCELEROMETER');
+					alert('Error ACCELEROMETER');
+				}
+				, options);
+				
+			
+			
+			
+			
+		};
+		
+		
 		// save Position to local store	
 		this.savePosition = function (){
 		
@@ -102,9 +128,18 @@ function ViewModel()
 			DevExpress.ui.notify({ message: message, position: { of: '.dx-viewport .layout-content' } });
 		};
     }
+	
+	
+	
+	
+	
 
 	
     var vm = new ViewModel();
+	
+	
+	
+	
 	return vm;
 	
 };
