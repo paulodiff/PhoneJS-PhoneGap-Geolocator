@@ -20,6 +20,7 @@ var compassHeading = 0;
 var PhoneGapNetword_watchID = null;
 var PhoneGapCompass_watchID = null;
 var PhoneGapGeolocation_watchID = null;
+var PhoneGapAccelerometer_watchID = null;
 
 var currentUrl;
 
@@ -413,6 +414,49 @@ function onResume() {
         }
 	}
 
+// Acceleration Accelerometer -----------------------------------------	
+
+	function PhoneGapAccelerometer_currentWatch() {
+		console.log('PhoneGapAccelerometer_currentWatch ... ');
+		navigator.accelerometer.getCurrentAcceleration(PhoneGapAccelerometer_onSuccess, PhoneGapAccelerometer_onError);
+
+	}
+
+    function PhoneGapAccelerometer_startWatch() {
+		console.log('PhoneGapAccelerometer_startWatch ... ');
+        var options = { frequency: 1000 };
+        PhoneGapAccelerometer_watchID = navigator.accelerometer.watchAcceleration(PhoneGapAccelerometer_onSuccess, PhoneGapAccelerometer_onError, options);
+    }
+
+    function PhoneGapAccelerometer_stopWatch() {
+		
+        if (PhoneGapAccelerometer_watchID) {
+			console.log('PhoneGapAccelerometer_stopWatch ... ');
+            navigator.accelerometer.clearWatch(PhoneGapAccelerometer_watchID);
+            PhoneGapAccelerometer_watchID = null;
+        }
+    }
+	
+	
+
+    function PhoneGapAccelerometer_onSuccess(acceleration) {
+		console.log('PhoneGapAccelerometer_onSuccess ');
+		
+        var txt_innerHTML = 'Acceleration X: ' + acceleration.x         + '<br />' +
+                            'Acceleration Y: ' + acceleration.y         + '<br />' +
+                            'Acceleration Z: ' + acceleration.z         + '<br />' +
+                            'Timestamp:      ' + acceleration.timestamp + '<br />';
+							
+		$('#phonegap_output').text(txt_innerHTML);
+		
+    }
+
+    function PhoneGapAccelerometer_onError() {
+		console.log('PhoneGapAccelerometer_onError ');
+        alert('Accelerometer error: ');
+    }
+	
+	
 /*
 // This gets called by jQuery mobile when the page has loaded
 $(document).bind("pageload", function(event, data) {

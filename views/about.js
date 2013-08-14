@@ -86,6 +86,19 @@
 		PhoneGapGeolocation_stopWatch();
 	};	
 	
+	function StartPhoneGapAcceleration(){
+		PhoneGapAccelerometer_startWatch();
+	};
+		
+	function StopPhoneGapAcceleration(){
+		PhoneGapAccelerometer_stopWatch();
+	};
+	
+	function GetCurrentPhoneGapAcceleration(){
+		PhoneGapAccelerometer_currentWatch();
+	};
+	
+	
 	function StartBarcodeScanner(){
 		var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 		scanner.scan(
@@ -116,10 +129,13 @@
 		StartPhoneGapNetwork : StartPhoneGapNetwork,
 		StartPhoneGapCompass : StartPhoneGapCompass,
 		StopPhoneGapCompass : StopPhoneGapCompass,
+		StartPhoneGapAcceleration : StartPhoneGapAcceleration,
+		StopPhoneGapAcceleration : StopPhoneGapAcceleration,
 		StopPhoneGapGeolocation : StopPhoneGapGeolocation,
 		StartPhoneGapGeolocation  : StartPhoneGapGeolocation,
 		StartBarcodeScanner: StartBarcodeScanner,
 		StartPushNotification: StartPushNotification,
+		GetCurrentPhoneGapAcceleration : GetCurrentPhoneGapAcceleration,
 		buttonClicked: buttonClicked		
 	};
 };
