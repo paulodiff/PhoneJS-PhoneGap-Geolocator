@@ -313,7 +313,7 @@ function onResume() {
 		console.log("Token Handler " + msg);
 	}
 
-	
+	/*
 	function initPushwoosh_OLD()
 	{
 		var pushNotification = window.plugins.pushNotification;
@@ -345,6 +345,7 @@ function onResume() {
 			navigator.notification.alert(title);
 		});
 	}
+	*/
 	
 
 	function initPushwoosh()
