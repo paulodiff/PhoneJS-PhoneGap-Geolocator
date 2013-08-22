@@ -362,9 +362,11 @@ function onResume() {
 		var pushNotification = window.plugins.pushNotification;
         // TODO: Enter your own GCM Sender ID in the register call for Android
         if (device.platform == 'android' || device.platform == 'Android') {
+			$('#phonegap_output').append('<li>Android RegisterPushNotification ...</li>');
 			pushNotification.register(PushNotificationSuccessHandler, PushNotificationErrorHandler,{"senderID":"1045204524713","ecb":"PushNotificationAndroid"});
         }
         else {
+			$('#phonegap_output').append('<li>Other RegisterPushNotification ...</li>');
             pushNotification.register(PushNotificationTokenHandler,PushNotificationErrorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"PushNotificationIOS"});
         }
         //console.log('RegisterPushNotification: ' + id);
@@ -373,7 +375,7 @@ function onResume() {
 	
 	function PushNotificationAndroid(event) {
 	
-		$('#phonegap_output').append('<li>RegisterPushNotification ...</li>');	
+		$('#phonegap_output').append('<li>RegisterPushNotificationAndroid ...</li>');	
 	
 		switch( e.event )
         {
