@@ -301,10 +301,11 @@ function onResume() {
 
 	function PushNotificationSuccessHandler(result){
 		alert('Callback Success! Result = '+result)
-		$('#phonegap_output').append('PushNotificationSuccessHandler ...' + result);
+		$('#phonegap_output').append('<li>PushNotificationSuccessHandler ...' + result + '</li>');
 	}
 	
 	function PushNotificationErrorHandler(error){
+		$('#phonegap_output').append('<li>PushNotificationErrorHandler ...' + error + '</li>');
 		alert(error);
 	}
 	
@@ -348,6 +349,7 @@ function onResume() {
 
 	function initPushwoosh()
 	{
+		$('#phonegap_output').append('<li>initPushwoosh ...</li>');
 		RegisterPushNotification();
 	}
 	
@@ -355,7 +357,7 @@ function onResume() {
 	function RegisterPushNotification(){
 	
 		console.log('RegisterPushNotification ... ');
-		$('#phonegap_output').append('RegisterPushNotification ...');
+		$('#phonegap_output').append('<li>RegisterPushNotification ...</li>');
 	
 		var pushNotification = window.plugins.pushNotification;
         // TODO: Enter your own GCM Sender ID in the register call for Android
@@ -365,13 +367,13 @@ function onResume() {
         else {
             pushNotification.register(PushNotificationTokenHandler,PushNotificationErrorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"PushNotificationIOS"});
         }
-        console.log('RegisterPushNotification: ' + id);
+        //console.log('RegisterPushNotification: ' + id);
     }
 	
 	
 	function PushNotificationAndroid(event) {
 	
-		$('#phonegap_output').append('RegisterPushNotification ...');	
+		$('#phonegap_output').append('<li>RegisterPushNotification ...</li>');	
 	
 		switch( e.event )
         {
@@ -381,17 +383,17 @@ function onResume() {
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
                     alert('registration id = '+e.regid);
-					$('#phonegap_output').append('red id ...' + e.regid);
+					$('#phonegap_output').append('<li>reg id ...' + e.regid + '</li>');
 					
 			// Your GCM push server needs to know the regID before it can push to this device
             // here is where you might want to send it the regID for later use.
              PushWoosh.appCode = "F19B9-D7122";
              PushWoosh.register(e.regid, function(data) {
                          alert("PushWoosh register success: " + JSON.stringify(data));
-						 $('#phonegap_output').append('PushWoosh register success...' + JSON.stringify(data));
+						 $('#phonegap_output').append('<li>PushWoosh register success...' + JSON.stringify(data) + '</li>');
                      }, function(errorregistration) {
                          alert("Couldn't register with PushWoosh" +  errorregistration);
-						 $('#phonegap_output').append('PushWoosh ERROR...' + errorregistration);
+						 $('#phonegap_output').append('<li>PushWoosh ERROR...' + errorregistration + '</li>');
                      });
 					
 					
@@ -402,18 +404,43 @@ function onResume() {
               // this is the actual push notification. its format depends on the data model
               // of the intermediary push server which must also be reflected in GCMIntentService.java
               alert('message = '+e.message+' msgcnt = '+e.msgcnt);
-			  $('#phonegap_output').append('message...' + +e.msgcnt);
+			  $('#phonegap_output').append('<li> Event message...' + +e.msgcnt + '</li>');
+			  
+			  if (e.foreground)
+                    {
+                        $("#phonegap_output").append('<li>--INLINE NOTIFICATION--' + '</li>');
+
+                        // if the notification contains a soundname, play it.
+						
+						$("#phonegap_output").append('<li>--INLINE NOTIFICATION--' + e.soundname + '</li>');
+						
+                        var my_media = new Media("/audio/bell.mp3");
+                        my_media.play();
+                    }
+                    else
+                    {   // otherwise we were launched because the user touched a notification in the notification tray.
+                        if (e.coldstart)
+                            $("#phonegap_output").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
+                        else
+                        $("#phonegap_output").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+                    }
+
+                    $("#phonegap_output").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+                    $("#phonegap_output").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+			  
+			  
+			  
 			  
             break;
 
             case 'error':
               alert('GCM error = '+e.msg);
-			  $('#phonegap_output').append('gcm error...' + +e.msg);
+			  $('#phonegap_output').append('<li>gcm error...' + +e.msg + '</li>');
             break;
 
             default:
               alert('An unknown GCM event has occurred');
-			  $('#phonegap_output').append('gcm error... unknown');
+			  $('#phonegap_output').append('<li> gcm error... unknown </li>');
               break;
         }
 	}
