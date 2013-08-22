@@ -301,6 +301,7 @@ function onResume() {
 
 	function PushNotificationSuccessHandler(result){
 		alert('Callback Success! Result = '+result)
+		$('#phonegap_output').append('PushNotificationSuccessHandler ...' + result);
 	}
 	
 	function PushNotificationErrorHandler(error){
@@ -312,9 +313,14 @@ function onResume() {
 	}
 
 	
-	function initPushwoosh()
+	function initPushwoosh_OLD()
 	{
 		var pushNotification = window.plugins.pushNotification;
+		
+							
+		$('#phonegap_output').text('init pushwoosh');
+		
+		
 		pushNotification.onDeviceReady();
 	 
 		pushNotification.registerDevice({ projectid: "1045204524713", appid : "F19B9-D7122" },
@@ -340,9 +346,16 @@ function onResume() {
 	}
 	
 
+	function initPushwoosh()
+	{
+		RegisterPushNotification();
+	}
+	
+	
 	function RegisterPushNotification(){
 	
 		console.log('RegisterPushNotification ... ');
+		$('#phonegap_output').append('RegisterPushNotification ...');
 	
 		var pushNotification = window.plugins.pushNotification;
         // TODO: Enter your own GCM Sender ID in the register call for Android
@@ -357,6 +370,9 @@ function onResume() {
 	
 	
 	function PushNotificationAndroid(event) {
+	
+		$('#phonegap_output').append('RegisterPushNotification ...');	
+	
 		switch( e.event )
         {
             case 'registered':
@@ -365,14 +381,17 @@ function onResume() {
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
                     alert('registration id = '+e.regid);
+					$('#phonegap_output').append('red id ...' + e.regid);
 					
 			// Your GCM push server needs to know the regID before it can push to this device
             // here is where you might want to send it the regID for later use.
              PushWoosh.appCode = "F19B9-D7122";
              PushWoosh.register(e.regid, function(data) {
                          alert("PushWoosh register success: " + JSON.stringify(data));
+						 $('#phonegap_output').append('PushWoosh register success...' + JSON.stringify(data));
                      }, function(errorregistration) {
                          alert("Couldn't register with PushWoosh" +  errorregistration);
+						 $('#phonegap_output').append('PushWoosh ERROR...' + errorregistration);
                      });
 					
 					
@@ -383,14 +402,18 @@ function onResume() {
               // this is the actual push notification. its format depends on the data model
               // of the intermediary push server which must also be reflected in GCMIntentService.java
               alert('message = '+e.message+' msgcnt = '+e.msgcnt);
+			  $('#phonegap_output').append('message...' + +e.msgcnt);
+			  
             break;
 
             case 'error':
               alert('GCM error = '+e.msg);
+			  $('#phonegap_output').append('gcm error...' + +e.msg);
             break;
 
             default:
               alert('An unknown GCM event has occurred');
+			  $('#phonegap_output').append('gcm error... unknown');
               break;
         }
 	}
