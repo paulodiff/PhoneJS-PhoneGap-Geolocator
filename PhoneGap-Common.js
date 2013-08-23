@@ -143,6 +143,18 @@ function deviceDetection() {
 }
 
 
+
+function getPhoneGapPath() {
+
+    var path = window.location.pathname;
+    path = path.substr( path, path.length - 10 );
+    return 'file://' + path;
+
+};
+
+
+
+
 function checkConnection() {
         var networkState = navigator.connection.type;
 
@@ -418,7 +430,9 @@ function onResume() {
 						
 						$("#phonegap_output").append('<li>--INLINE NOTIFICATION--' + e.soundname + '</li>');
 						
-                        var my_media = new Media("/audio/bell.mp3");
+						
+						
+						var my_media = new Media( getPhoneGapPath() + "/audio/bell.mp3" );						
                         my_media.play();
                     }
                     else
