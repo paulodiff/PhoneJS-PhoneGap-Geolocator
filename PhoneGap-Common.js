@@ -361,6 +361,12 @@ function onResume() {
 					// Your GCM push server needs to know the regID before it can push to this device
 					// here is where you might want to send it the regID for later use.
 
+					PushWoosh.appCode = "F19B9-D7122";
+					PushWoosh.register(result, function(data) {
+                        $('#phonegap_output').append("PushWoosh register success: " + JSON.stringify(data));
+                    }, function(errorregistration) {
+                        alert("Couldn't register with PushWoosh" +  errorregistration);
+                    });
 					
 					
 					
