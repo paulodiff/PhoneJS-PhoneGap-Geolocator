@@ -432,7 +432,7 @@ function onResume() {
 						
 						
 						
-						var my_media = new Media( getPhoneGapPath() + "/audio/bell.mp3" );						
+						var my_media = new Media( getPhoneGapPath() + "audio/bell.mp3" );						
                         my_media.play();
                     }
                     else
@@ -488,8 +488,8 @@ function onResume() {
 
 	function PhoneGapPlaySound(){
 	
-		var my_media = new Media( getPhoneGapPath() + "/audio/bell.mp3", PhoneGapPlaySound_onSuccess, PhoneGapPlaySound_onError );						
-		$("#phonegap_output").append('<li>PLAY FILE -> MSG: ' + getPhoneGapPath() + "/audio/bell.mp3" + '</li>');
+		var my_media = new Media( getPhoneGapPath() + "audio/bell.mp3", PhoneGapPlaySound_onSuccess, PhoneGapPlaySound_onError );						
+		$("#phonegap_output").append('<li>PLAY FILE -> MSG: ' + getPhoneGapPath() + "audio/bell.mp3" + '</li>');
         my_media.play();
 	
 	}
