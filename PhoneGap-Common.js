@@ -424,7 +424,7 @@ function onResume() {
 			  
 			  if (e.foreground)
                     {
-                        $("#phonegap_output").append('<li>--INLINE NOTIFICATION--' + '</li>');
+                        $("#phonegap_output").append('<li>--INLINE NOTIFICATION--' + getPhoneGapPath() +  '</li>');
 
                         // if the notification contains a soundname, play it.
 						
@@ -482,6 +482,31 @@ function onResume() {
         }
 	}
 
+	
+// Media player
+
+
+	function PhoneGapPlaySound(){
+	
+		var my_media = new Media( getPhoneGapPath() + "/audio/bell.mp3", PhoneGapPlaySound_onSuccess, PhoneGapPlaySound_onError );						
+		$("#phonegap_output").append('<li>PLAY FILE -> MSG: ' + getPhoneGapPath() + "/audio/bell.mp3" + '</li>');
+        my_media.play();
+	
+	}
+	
+
+	function PhoneGapPlaySound_onSuccess() {
+		console.log("playAudio():Audio Success");
+	}
+
+	// onError Callback
+	//
+	function PhoneGapPlaySound_onError(error) {
+		alert('code: '    + error.code    + '\n' +
+			  'message: ' + error.message + '\n');
+	}
+	
+	
 // Acceleration Accelerometer -----------------------------------------	
 
 	function PhoneGapAccelerometer_currentWatch() {

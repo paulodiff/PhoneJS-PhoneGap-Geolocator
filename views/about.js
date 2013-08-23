@@ -114,6 +114,10 @@
 		);
 	};
 
+	function StartPhoneGapPlaySound(){
+		PhoneGapPlaySound();
+	};
+	
 	function StartPushNotification(){
 		initPushNotification();
 	};
@@ -133,6 +137,7 @@
 		StopPhoneGapAcceleration : StopPhoneGapAcceleration,
 		StopPhoneGapGeolocation : StopPhoneGapGeolocation,
 		StartPhoneGapGeolocation  : StartPhoneGapGeolocation,
+		StartPhoneGapPlaySound  : StartPhoneGapPlaySound,
 		StartBarcodeScanner: StartBarcodeScanner,
 		StartPushNotification: StartPushNotification,
 		GetCurrentPhoneGapAcceleration : GetCurrentPhoneGapAcceleration,
