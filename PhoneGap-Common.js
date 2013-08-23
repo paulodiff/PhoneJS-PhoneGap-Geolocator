@@ -313,39 +313,7 @@ function onResume() {
 		console.log("Token Handler " + msg);
 	}
 
-	/*
-	function initPushwoosh_OLD()
-	{
-		var pushNotification = window.plugins.pushNotification;
-		
-							
-		$('#phonegap_output').text('init pushwoosh');
-		
-		
-		pushNotification.onDeviceReady();
-	 
-		pushNotification.registerDevice({ projectid: "1045204524713", appid : "F19B9-D7122" },
-			function(status) {
-				var pushToken = status;
-				console.warn('push token: ' + pushToken);
-			},
-			function(status) {
-				console.warn(JSON.stringify(['failed to register ', status]));
-			}
-		);
-	 
-		document.addEventListener('push-notification', function(event) {
-			var title = event.notification.title;
-				var userData = event.notification.userdata;
-	 
-				if(typeof(userData) != "undefined") {
-				console.warn('user data: ' + JSON.stringify(userData));
-			}
-	 
-			navigator.notification.alert(title);
-		});
-	}
-	*/
+	
 	
 
 	function initPushNotification()
@@ -376,9 +344,9 @@ function onResume() {
     }
 	
 	
-	function PushNotificationAndroid(event) {
+	function PushNotificationAndroid(e) {
 	
-		$('#phonegap_output').append('<li>RegisterPushNotificationAndroid ...</li>');	
+		$('#phonegap_output').append('<li>RegisterPushNotificationAndroid EVENT:' + e.event + '</li>');	
 	
 		switch( e.event )
         {
