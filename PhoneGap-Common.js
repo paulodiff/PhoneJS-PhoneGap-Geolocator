@@ -348,9 +348,11 @@ function onResume() {
 	*/
 	
 
-	function initPushwoosh()
+	function initPushNotification()
 	{
-		$('#phonegap_output').append('<li>initPushwoosh ...</li>');
+		$('#phonegap_output').append('<li>initPushNotification ...</li>');
+		var pushNotification = window.plugins.pushNotification;
+		//pushNotification.onDeviceReady();
 		RegisterPushNotification();
 	}
 	
@@ -388,16 +390,10 @@ function onResume() {
                     alert('registration id = '+e.regid);
 					$('#phonegap_output').append('<li>reg id ...' + e.regid + '</li>');
 					
-			// Your GCM push server needs to know the regID before it can push to this device
-            // here is where you might want to send it the regID for later use.
-             PushWoosh.appCode = "F19B9-D7122";
-             PushWoosh.register(e.regid, function(data) {
-                         alert("PushWoosh register success: " + JSON.stringify(data));
-						 $('#phonegap_output').append('<li>PushWoosh register success...' + JSON.stringify(data) + '</li>');
-                     }, function(errorregistration) {
-                         alert("Couldn't register with PushWoosh" +  errorregistration);
-						 $('#phonegap_output').append('<li>PushWoosh ERROR...' + errorregistration + '</li>');
-                     });
+					// Your GCM push server needs to know the regID before it can push to this device
+					// here is where you might want to send it the regID for later use.
+
+					
 					
 					
                 }
