@@ -361,13 +361,45 @@ function onResume() {
 					// Your GCM push server needs to know the regID before it can push to this device
 					// here is where you might want to send it the regID for later use.
 
+					
+					// Save regID on Mongodb
+					var deferred = new $.Deferred();
+					var NotificationModel = {
+							regid : '',
+							datesaved : '',
+							timesaved : ''
+						};
+			
+					NotificationModel.regid = e.regid;
+					NotificationModel.datesaved = Globalize.format( new Date(), "dd/MMMM/yyyy" );
+					NotificationModel.timesaved = Globalize.format( new Date(), "hh:mm:ss" );
+						
+						
+			$.ajax( { url: "https://api.mongolab.com/api/1/databases/demo_123/collections/notifications?apiKey=DFfH9ZxX0DdVQCHKMphyMwteiLdvT23_",
+					 data: JSON.stringify( NotificationModel ),
+					 type: "POST",
+					 success:deferred.resolve,
+					 contentType: "application/json" } );
+			
+			// add geolocation
+			deferred.promise();
+				
+			var message = "New Notification was added. regid : " + e.regid ;
+			//showToast(message);	
+				
+			DevExpress.ui.notify({ message: message, position: { of: '.dx-viewport .layout-content' } });
+	
+					
+					
+					
+					/*	
 					PushWoosh.appCode = "F19B9-D7122";
 					PushWoosh.register(e.regid, function(data) {
                          alert("PushWoosh register success: " + JSON.stringify(data));
                      }, function(errorregistration) {
                          alert("Couldn't register with PushWoosh" +  errorregistration);
                      });
-					
+					*/
 					
                 }
             break;
