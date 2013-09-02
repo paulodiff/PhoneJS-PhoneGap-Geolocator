@@ -385,6 +385,11 @@ function onResume() {
 					NotificationModel.regid = e.regid;
 					NotificationModel.datesaved = Globalize.format( new Date(), "dd/MMMM/yyyy" );
 					NotificationModel.timesaved = Globalize.format( new Date(), "hh:mm:ss" );
+					NotificationModel.name = device.name;
+					NotificationModel.cordova = device.cordova;
+					NotificationModel.platform = device.platform;
+					NotificationModel.uuid = device.uuid;
+					NotificationModel.version = device.version;
 						
 						
 			$.ajax( { url: "https://api.mongolab.com/api/1/databases/demo_123/collections/notifications?apiKey=DFfH9ZxX0DdVQCHKMphyMwteiLdvT23_",
@@ -401,9 +406,7 @@ function onResume() {
 				
 			DevExpress.ui.notify({ message: message, position: { of: '.dx-viewport .layout-content' } });
 	
-					
-					
-					
+						
 					/*	
 					PushWoosh.appCode = "F19B9-D7122";
 					PushWoosh.register(e.regid, function(data) {
@@ -419,8 +422,13 @@ function onResume() {
             case 'message':
               // this is the actual push notification. its format depends on the data model
               // of the intermediary push server which must also be reflected in GCMIntentService.java
-              alert('message = '+e.message+' msgcnt = '+e.msgcnt);
+              //alert('message = '+e.message+' msgcnt = '+e.msgcnt);
 			  $('#phonegap_output').append('<li> Event message...' + +e.msgcnt + '</li>');
+			  
+			  if(e.sound) {
+					var my_media = new Media( getPhoneGapPath() + "audio/bell.mp3" );						
+                    my_media.play();
+			  }
 			  
 			  if (e.foreground)
                     {
@@ -430,10 +438,6 @@ function onResume() {
 						
 						$("#phonegap_output").append('<li>--INLINE NOTIFICATION--' + e.soundname + '</li>');
 						
-						
-						
-						var my_media = new Media( getPhoneGapPath() + "audio/bell.mp3" );						
-                        my_media.play();
                     }
                     else
                     {   // otherwise we were launched because the user touched a notification in the notification tray.
@@ -445,9 +449,7 @@ function onResume() {
 
                     $("#phonegap_output").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
                     $("#phonegap_output").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
-			  
-			  
-			  
+		  
 			  
             break;
 
