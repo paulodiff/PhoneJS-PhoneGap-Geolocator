@@ -432,9 +432,18 @@ function onResume() {
                     my_media.play();
 			  }
 			  
+			  
+			  if(e.payload.sound) {
+					
+					$("#phonegap_output").append('<li>PLAY SOUND PAYLOAD</li>');
+					var my_media = new Media( getPhoneGapPath() + "audio/bell.mp3" );						
+                    my_media.play();
+			  }
+			  
+			  
 			  if (e.foreground)
                     {
-                        $("#phonegap_output").append('<li>INLINE NOTIFICATION:' + getPhoneGapPath() +  '</li>');
+                        $("#phonegap_output").append('<li>FOREGROUND NOTIFICATION:' + getPhoneGapPath() +  '</li>');
 
                         // if the notification contains a soundname, play it.
 												
@@ -447,8 +456,10 @@ function onResume() {
                         $("#phonegap_output").append('<li>BACKGROUND NOTIFICATION</li>');
                     }
 
-                    $("#phonegap_output").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
-                    $("#phonegap_output").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+                $("#phonegap_output").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+                $("#phonegap_output").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+				$("#phonegap_output").append('<li>MESSAGE -> SOUND: ' + e.payload.sound + '</li>');
+                $("#phonegap_output").append('<li>MESSAGE -> FOREGROND: ' + e.payload.foreground + '</li>');
 		  
 			  
             break;
