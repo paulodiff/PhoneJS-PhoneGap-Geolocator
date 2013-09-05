@@ -98,6 +98,9 @@
 		PhoneGapAccelerometer_currentWatch();
 	};
 	
+	function ResetLog(){
+		$("#phonegap_output").html('<li>Log reset!</li>');
+	};
 	
 	function StartBarcodeScanner(){
 		var scanner = cordova.require("cordova/plugin/BarcodeScanner");
@@ -140,6 +143,7 @@
 		StartPhoneGapPlaySound  : StartPhoneGapPlaySound,
 		StartBarcodeScanner: StartBarcodeScanner,
 		StartPushNotification: StartPushNotification,
+		ResetLog: ResetLog,
 		GetCurrentPhoneGapAcceleration : GetCurrentPhoneGapAcceleration,
 		buttonClicked: buttonClicked		
 	};

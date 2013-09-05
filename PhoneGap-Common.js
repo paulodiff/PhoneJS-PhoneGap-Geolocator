@@ -423,28 +423,28 @@ function onResume() {
               // this is the actual push notification. its format depends on the data model
               // of the intermediary push server which must also be reflected in GCMIntentService.java
               //alert('message = '+e.message+' msgcnt = '+e.msgcnt);
-			  $('#phonegap_output').append('<li> Event message...' + +e.msgcnt + '</li>');
+			  $('#phonegap_output').append('<li>Event message...' +e.msgcnt + '</li>');
 			  
 			  if(e.sound) {
+					
+					$("#phonegap_output").append('<li>PLAY SOUND</li>');
 					var my_media = new Media( getPhoneGapPath() + "audio/bell.mp3" );						
                     my_media.play();
 			  }
 			  
 			  if (e.foreground)
                     {
-                        $("#phonegap_output").append('<li>--INLINE NOTIFICATION--' + getPhoneGapPath() +  '</li>');
+                        $("#phonegap_output").append('<li>INLINE NOTIFICATION:' + getPhoneGapPath() +  '</li>');
 
                         // if the notification contains a soundname, play it.
-						
-						$("#phonegap_output").append('<li>--INLINE NOTIFICATION--' + e.soundname + '</li>');
-						
+												
                     }
                     else
                     {   // otherwise we were launched because the user touched a notification in the notification tray.
                         if (e.coldstart)
-                            $("#phonegap_output").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
+                            $("#phonegap_output").append('<li>COLDSTART NOTIFICATION</li>');
                         else
-                        $("#phonegap_output").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+                        $("#phonegap_output").append('<li>BACKGROUND NOTIFICATION</li>');
                     }
 
                     $("#phonegap_output").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
